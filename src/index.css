@@ -8,22 +8,22 @@
 :root {
   --color-bg: #0a0a0f;
   --text-primary: #ffffff;
-  --text-secondary: #d1d5db;
-  --text-muted: #9ca3af;
-  --glass-bg: rgba(10, 10, 15, 0.35);
-  --glass-bg-scrolled: rgba(10, 10, 15, 0.6);
+  --text-secondary: #e5e7eb;
+  --text-muted: #cbd5e1;
+  --glass-bg: rgba(5, 5, 8, 0.55);
+  --glass-bg-scrolled: rgba(5, 5, 8, 0.8);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --card-bg: rgba(10, 10, 15, 0.45);
+  --card-bg: rgba(10, 10, 15, 0.12);
 }
 
 html.light {
   --color-bg: #ffffff;
-  --text-primary: #111114;
-  --text-secondary: #4b5563;
-  --text-muted: #6b7280;
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-scrolled: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(0, 0, 0, 0.08);
+  --text-primary: #000000;
+  --text-secondary: #1f2937;
+  --text-muted: #374151;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-bg-scrolled: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(0, 0, 0, 0.12);
   --card-bg: rgba(255, 255, 255, 0.65);
 }
 

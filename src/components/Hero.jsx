@@ -4,18 +4,18 @@ import useTypewriter from '../hooks/useTypewriter'
 // ===== HERO SECTION =====
 const ROLES = [
     'Android Developer',
+    'Kotlin Developer',
+    'Mobile App Developer',
     'Software Engineer',
-    'CS Student',
-    'Problem Solver',
 ]
 
 // ===== SKILLS CARD =====
 const SKILLS_CARD = {
-    role: 'Full-Stack Developer',
-    languages: ['Kotlin', 'Python', 'C++'],
-    frameworks: ['React'],
-    tools: ['Git', 'Android Studio', 'VS Code'],
-    currentlyLearning: 'MVVM Architecture, Jetpack Compose',
+    role: 'Android Developer',
+    languages: ['Kotlin', 'C++', 'Python', 'SQL'],
+    android: ['Jetpack Compose', 'MVVM', 'Room'],
+    tools: ['Android Studio', 'Git', 'GitHub'],
+    currentlyLearning: 'Advanced Android Development & DSA',
 }
 
 function Hero() {
@@ -32,7 +32,7 @@ function Hero() {
                     {/* ===== HERO TEXT ===== */}
                     <p className="text-teal-400 font-medium mb-2">Hi, Myself</p>
 
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 text-theme-primary">
                         Shubham
                     </h1>
 
@@ -46,7 +46,7 @@ function Hero() {
 
                     {/* ===== ABOUT TEXT ===== */}
                     <p className="text-theme-muted text-lg mb-8 max-w-lg">
-                        I'm Shubham Raj, a software developer passionate about building Android applications and exploring modern web technologies. I enjoy solving real-world problems through clean, scalable software and am constantly learning to become a better engineer.
+                        I'm Shubham Raj — a Computer Science student and aspiring Android Developer who builds practical, user-focused Apps with Kotlin and modern Android technologies. I enjoy turning ideas into clean, scalable software and continuously sharpening my problem-solving skills through DSA and real-world projects.
                     </p>
 
                     {/* ===== BUTTONS ===== */}
@@ -96,6 +96,7 @@ function Hero() {
                             <FaLinkedin />
                         </a>
 
+                        {/* ===== EMAIL ===== */}
                         <a
                             href="mailto:ershubhcsofficial@gmail.com"
                             className="hover:text-white transition-colors"
@@ -106,30 +107,31 @@ function Hero() {
                 </div>
 
                 {/* RIGHT SIDE - Code Editor Card */}
-                <div className="rounded-xl border border-theme bg-card backdrop-blur-xl shadow-2xl shadow-purple-500/10 overflow-hidden">
+                <div className="rounded-xl border border-white/10 bg-[#0d0d12] shadow-2xl shadow-purple-500/10 overflow-hidden">
                     {/* Title Bar */}
-                    <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-theme">
+                    <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
                         <span className="w-3 h-3 rounded-full bg-red-500"></span>
                         <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
                         <span className="w-3 h-3 rounded-full bg-green-500"></span>
-
-                        <span className="ml-3 text-xs text-theme-muted font-mono">
+                        <span className="ml-3 text-xs text-gray-400 font-mono">
                             shubham.kt
                         </span>
                     </div>
 
                     {/* Code Block */}
-                    <pre className="p-6 text-sm font-mono leading-relaxed overflow-x-auto">
+                    <pre className="p-6 text-sm font-mono leading-relaxed overflow-x-auto text-gray-300">
                         <code>
                             <span className="text-purple-400">const</span>{' '}
                             <span className="text-teal-300">Shubham</span>{' '}
-                            <span className="text-theme-muted">=</span> {'{'}
+                            {/* <span className="text-theme-muted">=</span> {'{'} */}
+                            <span className="text-gray-300">=</span> {'{'}
                             {'\n'}
 
                             {Object.entries(SKILLS_CARD).map(([key, value]) => (
                                 <div key={key} className="pl-4">
                                     <span className="text-blue-300">{key}</span>
-                                    <span className="text-theme-muted">: </span>
+                                    {/* <span className="text-theme-muted">: </span> */}
+                                    <span className="text-gray-300">: </span>
 
                                     {Array.isArray(value) ? (
                                         <span className="text-pink-300">
@@ -139,12 +141,12 @@ function Hero() {
                                         <span className="text-pink-300">'{value}'</span>
                                     )}
 
-                                    <span className="text-theme-muted">,</span>
+                                    <span className="text-gray-300">,</span>
                                 </div>
                             ))}
 
                             {'}'}
-                            <span className="text-theme-muted">;</span>
+                            <span className="text-gray-300">;</span>
                         </code>
                     </pre>
                 </div>

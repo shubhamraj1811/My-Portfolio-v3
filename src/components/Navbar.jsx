@@ -36,7 +36,7 @@ function Navbar() {
         >
             <div className="flex items-center justify-between px-6 py-3">
                 <span
-                    className="text-xl font-bold cursor-pointer bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                    className="text-xl font-bold cursor-pointer text-theme-primary"
                     onClick={() => scrollToSection('home')}
                 >
                     Shubham
