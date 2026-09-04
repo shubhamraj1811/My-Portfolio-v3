@@ -45,7 +45,7 @@ function Hero() {
                     </h2>
 
                     {/* ===== ABOUT TEXT ===== */}
-                    <p className="text-gray-400 text-lg mb-8 max-w-lg">
+                    <p className="text-theme-muted text-lg mb-8 max-w-lg">
                         I'm Shubham Raj, a software developer passionate about building Android applications and exploring modern web technologies. I enjoy solving real-world problems through clean, scalable software and am constantly learning to become a better engineer.
                     </p>
 
@@ -62,18 +62,19 @@ function Hero() {
                             View Projects
                         </button>
 
+                        {/* resume button */}
                         <a
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 rounded-full font-semibold border border-white/20 hover:bg-white/10 transition-colors"
+                            className="px-6 py-3 rounded-full font-semibold border border-theme hover:bg-white/10 transition-colors"
                         >
                             Download Resume
                         </a>
                     </div>
 
                     {/* ===== SOCIAL LINKS ===== */}
-                    <div className="flex gap-5 text-2xl text-gray-400">
+                    <div className="flex gap-5 text-2xl text-theme-muted">
 
                         {/* ===== GITHUB ===== */}
                         <a
@@ -105,14 +106,14 @@ function Hero() {
                 </div>
 
                 {/* RIGHT SIDE - Code Editor Card */}
-                <div className="rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl shadow-purple-500/10 overflow-hidden">
+                <div className="rounded-xl border border-theme bg-card backdrop-blur-xl shadow-2xl shadow-purple-500/10 overflow-hidden">
                     {/* Title Bar */}
-                    <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+                    <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-theme">
                         <span className="w-3 h-3 rounded-full bg-red-500"></span>
                         <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
                         <span className="w-3 h-3 rounded-full bg-green-500"></span>
 
-                        <span className="ml-3 text-xs text-gray-400 font-mono">
+                        <span className="ml-3 text-xs text-theme-muted font-mono">
                             shubham.kt
                         </span>
                     </div>
@@ -122,13 +123,13 @@ function Hero() {
                         <code>
                             <span className="text-purple-400">const</span>{' '}
                             <span className="text-teal-300">Shubham</span>{' '}
-                            <span className="text-gray-400">=</span> {'{'}
+                            <span className="text-theme-muted">=</span> {'{'}
                             {'\n'}
 
                             {Object.entries(SKILLS_CARD).map(([key, value]) => (
                                 <div key={key} className="pl-4">
                                     <span className="text-blue-300">{key}</span>
-                                    <span className="text-gray-400">: </span>
+                                    <span className="text-theme-muted">: </span>
 
                                     {Array.isArray(value) ? (
                                         <span className="text-pink-300">
@@ -138,12 +139,12 @@ function Hero() {
                                         <span className="text-pink-300">'{value}'</span>
                                     )}
 
-                                    <span className="text-gray-400">,</span>
+                                    <span className="text-theme-muted">,</span>
                                 </div>
                             ))}
 
                             {'}'}
-                            <span className="text-gray-400">;</span>
+                            <span className="text-theme-muted">;</span>
                         </code>
                     </pre>
                 </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ThemeToggle from './ThemeToggle'
 
 const NAV_LINKS = [
     { label: 'Home', id: 'home' },
@@ -30,9 +31,8 @@ function Navbar() {
     return (
         <nav
             className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl
-      rounded-full border border-white/10 backdrop-blur-xl
-      transition-all duration-300
-      ${scrolled ? 'bg-black/50 shadow-lg shadow-purple-500/10' : 'bg-black/30'}`}
+      rounded-full border backdrop-blur-xl transition-all duration-300
+      ${scrolled ? 'bg-glass-scrolled shadow-lg shadow-purple-500/10' : 'bg-glass'}`}
         >
             <div className="flex items-center justify-between px-6 py-3">
                 <span
@@ -42,43 +42,46 @@ function Navbar() {
                     Shubham
                 </span>
 
-                {/* Desktop links */}
                 <div className="hidden lg:flex items-center gap-1">
                     {NAV_LINKS.map((link) => (
                         <button
                             key={link.id}
                             onClick={() => scrollToSection(link.id)}
-                            className="px-3 py-2 text-sm text-gray-300 hover:text-white rounded-full hover:bg-white/10 transition-colors"
+                            className="px-3 py-2 text-sm text-theme-secondary hover:text-theme-primary rounded-full hover:bg-white/10 transition-colors"
                         >
                             {link.label}
                         </button>
                     ))}
                 </div>
 
-                <button
-                    onClick={() => scrollToSection('contact')}
-                    className="hidden lg:block px-5 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
-                >
-                    Hire Me
-                </button>
+                <div className="hidden lg:flex items-center gap-3">
+                    <ThemeToggle />
+                    <button
+                        onClick={() => scrollToSection('contact')}
+                        className="px-5 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
+                    >
+                        Hire Me
+                    </button>
+                </div>
 
-                {/* Mobile toggle */}
                 <button
-                    className="lg:hidden text-white text-2xl"
+                    className="lg:hidden text-theme-primary text-2xl"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? '✕' : '☰'}
                 </button>
             </div>
 
-            {/* Mobile menu */}
             {isOpen && (
                 <div className="lg:hidden flex flex-col items-center gap-1 pb-4 px-4">
+                    <div className="mb-2">
+                        <ThemeToggle />
+                    </div>
                     {NAV_LINKS.map((link) => (
                         <button
                             key={link.id}
                             onClick={() => scrollToSection(link.id)}
-                            className="w-full py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                            className="w-full py-2 text-theme-secondary hover:text-theme-primary hover:bg-white/10 rounded-full transition-colors"
                         >
                             {link.label}
                         </button>

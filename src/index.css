@@ -3,67 +3,114 @@
 @theme {
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
+}
 
-  --color-bg-dark: #0a0a0f;
-  --color-teal: #2dd4bf;
-  --color-purple: #8b5cf6;
-  --color-pink: #ec4899;
-  --color-blue: #38bdf8;
+:root {
+  --color-bg: #0a0a0f;
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --glass-bg: rgba(10, 10, 15, 0.35);
+  --glass-bg-scrolled: rgba(10, 10, 15, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(10, 10, 15, 0.45);
+}
+
+html.light {
+  --color-bg: #ffffff;
+  --text-primary: #111114;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-scrolled: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.65);
 }
 
 body {
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-bg);
   font-family: var(--font-body);
   overflow-x: hidden;
+  transition: background-color 0.3s ease;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
 }
 
-/* Animated mesh gradient background */
+/* theme-aware utility classes */
+.text-theme-primary { color: var(--text-primary); }
+.text-theme-secondary { color: var(--text-secondary); }
+.text-theme-muted { color: var(--text-muted); }
+.bg-glass { background-color: var(--glass-bg); border-color: var(--glass-border); }
+.bg-glass-scrolled { background-color: var(--glass-bg-scrolled); border-color: var(--glass-border); }
+.bg-card { background-color: var(--card-bg); border-color: var(--glass-border); }
+.border-theme { border-color: var(--glass-border); }
+
+/* Background mesh + moving blobs */
 .gradient-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: var(--color-bg-dark);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(45, 212, 191, 0.35), transparent 50%),
+    radial-gradient(circle at 80% 15%, rgba(139, 92, 246, 0.35), transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.3), transparent 50%),
+    radial-gradient(circle at 5% 90%, rgba(56, 189, 248, 0.25), transparent 50%),
+    var(--color-bg);
+  transition: background-color 0.3s ease;
+}
+
+html.light .gradient-bg {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(45, 212, 191, 0.25), transparent 50%),
+    radial-gradient(circle at 80% 15%, rgba(139, 92, 246, 0.22), transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.2), transparent 50%),
+    radial-gradient(circle at 5% 90%, rgba(56, 189, 248, 0.18), transparent 50%),
+    var(--color-bg);
 }
 
 .gradient-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(150px);
   opacity: 0.55;
-  animation: float 10s ease-in-out infinite;
+  mix-blend-mode: screen;
+  animation: float 18s ease-in-out infinite;
   will-change: transform;
 }
 
+html.light .gradient-blob {
+  opacity: 0.4;
+  mix-blend-mode: normal;
+}
+
 .blob-1 {
-  width: 500px;
-  height: 500px;
-  background: var(--color-teal);
-  top: -10%;
+  width: 700px;
+  height: 700px;
+  background: #2dd4bf;
+  top: -15%;
   left: -10%;
   animation-delay: 0s;
 }
 
 .blob-2 {
-  width: 600px;
-  height: 600px;
-  background: var(--color-purple);
-  top: 20%;
-  right: -15%;
-  animation-delay: 2s;
+  width: 800px;
+  height: 800px;
+  background: #8b5cf6;
+  top: 10%;
+  right: -20%;
+  animation-delay: 3s;
 }
 
 .blob-3 {
-  width: 450px;
-  height: 450px;
-  background: var(--color-pink);
-  bottom: -10%;
-  left: 20%;
-  animation-delay: 5s;
+  width: 650px;
+  height: 650px;
+  background: #ec4899;
+  bottom: -15%;
+  left: 15%;
+  animation-delay: 6s;
 }
 
 @keyframes float {
