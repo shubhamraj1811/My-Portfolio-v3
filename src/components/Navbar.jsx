@@ -39,7 +39,7 @@ function Navbar() {
                     className="text-xl font-bold cursor-pointer text-theme-primary"
                     onClick={() => scrollToSection('home')}
                 >
-                    Shubham
+                    Shubham.
                 </span>
 
                 {/* Navigation Links */}

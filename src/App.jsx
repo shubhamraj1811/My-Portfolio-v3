@@ -1,6 +1,8 @@
 import GradientBackground from './components/GradientBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import AboutMe from './components/AboutMe'
+import CursorFollower from './components/CursorFollower'
 
 const sections = [
     { id: 'about', label: 'About Me' },
@@ -16,10 +18,12 @@ function App() {
     return (
         <div className="min-h-screen text-white">
             <GradientBackground />
+            <CursorFollower />
             <Navbar />
             <Hero />
+            <AboutMe />
 
-            {sections.map((s) => (
+            {/* {sections.map((s) => (
                 <section
                     key={s.id}
                     id={s.id}
@@ -27,7 +31,7 @@ function App() {
                 >
                     <h2 className="text-3xl font-bold">{s.label} section</h2>
                 </section>
-            ))}
+            ))} */}
         </div>
     )
 }
