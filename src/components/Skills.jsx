@@ -62,7 +62,7 @@ function SkillModal({ skill, onClose }) {
 
    return (
       <div
-         className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+         className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
          onClick={onClose}
       >
          <div
@@ -146,7 +146,7 @@ function SkillModal({ skill, onClose }) {
                   rel="noopener noreferrer"
                   className="inline-block w-full text-center px-5 py-2.5 rounded-full font-semibold
 
-                bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
+                bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
                >
                   View Project →
                </a>
@@ -234,7 +234,7 @@ function Skills() {
 
                 ${
                    activeCategory === cat
-                      ? "bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white border-transparent"
+                      ? "bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white border-transparent"
                       : "border-theme text-theme-secondary hover:text-theme-primary hover:bg-white/10"
                 }`}
                      >

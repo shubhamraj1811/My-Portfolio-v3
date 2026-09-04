@@ -48,7 +48,7 @@ function Navbar() {
                         <button
                             key={link.id}
                             onClick={() => scrollToSection(link.id)}
-                            className="px-3 py-2 text-sm text-theme-secondary rounded-full transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500"
+                            className="px-3 py-2 text-sm text-theme-secondary rounded-full transition-all duration-300 hover:text-white hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500"
                         >
                             {link.label}
                         </button>
@@ -60,7 +60,7 @@ function Navbar() {
                     <ThemeToggle />
                     <button
                         onClick={() => scrollToSection('contact')}
-                        className="px-5 py-2 text-sm font-semibold rounded-full bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
+                        className="px-5 py-2 text-sm font-semibold rounded-full bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
                     >
                         Hire Me
                     </button>

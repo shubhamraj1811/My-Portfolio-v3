@@ -37,7 +37,7 @@ function CursorFollower() {
     return (
         <div
             ref={dotRef}
-            className={`fixed top-0 left-0 w-5 h-5 rounded-full pointer-events-none z-[9999] hidden sm:block
+            className={`fixed top-0 left-0 w-5 h-5 rounded-full pointer-events-none z-9999 hidden sm:block
       ${theme === 'dark'
                     ? 'bg-purple-300 shadow-[0_0_18px_6px_rgba(196,181,253,0.55)]'
                     : 'bg-purple-700 shadow-[0_0_12px_4px_rgba(109,40,217,0.35)]'}`}

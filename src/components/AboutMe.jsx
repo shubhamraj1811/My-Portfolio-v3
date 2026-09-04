@@ -27,7 +27,7 @@ const FOCUS_TAGS = [
 
 function IconBox({ emoji }) {
    return (
-      <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme text-lg">
+      <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-linear-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme text-lg">
          {emoji}
       </div>
    );
@@ -60,7 +60,7 @@ function AboutMe() {
                   </div>
 
                   {/* Profile Photo */}
-                  <div className="w-40 h-40 rounded-full bg-gradient-to-br from-teal-400 via-purple-500 to-pink-500 p-[3px] mb-4">
+                       <div className="w-40 h-40 rounded-full bg-linear-to-br from-teal-400 via-purple-500 to-pink-500 p-0.75 mb-4">
                      <div className="w-full h-full rounded-full bg-[#0d0d12] flex items-center justify-center text-theme-muted text-xs">
                         <img
                            src={profileImage}
@@ -200,7 +200,7 @@ function AboutMe() {
                <div className="grid sm:grid-cols-2 gap-4">
                   {BELIEFS.map((b) => (
                      <div key={b.num} className="flex items-center gap-4">
-                        <span className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        <span className="text-2xl font-bold bg-linear-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                            {b.num}
                         </span>
                         <span className="text-theme-secondary font-medium">
@@ -223,7 +223,7 @@ function AboutMe() {
                   {FOCUS_TAGS.map((tag) => (
                      <span
                         key={tag}
-                        className="px-5 py-2 rounded-full border border-theme text-sm font-medium text-theme-secondary bg-gradient-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:text-white hover:border-transparent transition-all duration-300"
+                        className="px-5 py-2 rounded-full border border-theme text-sm font-medium text-theme-secondary bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:text-white hover:border-transparent transition-all duration-300"
                      >
                         {tag}
                      </span>

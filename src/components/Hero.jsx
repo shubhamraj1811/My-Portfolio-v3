@@ -38,7 +38,7 @@ function Hero() {
 
                     {/* ===== ROLE TEXT ===== */}
                     <h2 className="text-2xl sm:text-3xl font-semibold mb-6 h-10">
-                        <span className="bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        <span className="bg-linear-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                             {roleText}
                         </span>
                         <span className="animate-pulse">|</span>
@@ -57,7 +57,7 @@ function Hero() {
                                     .getElementById('projects')
                                     ?.scrollIntoView({ behavior: 'smooth' })
                             }
-                            className="px-6 py-3 rounded-full font-semibold bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 hover:opacity-90 transition-opacity"
+                            className="px-6 py-3 rounded-full font-semibold bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 hover:opacity-90 transition-opacity"
                         >
                             View Projects
                         </button>
@@ -67,7 +67,7 @@ function Hero() {
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 rounded-full font-semibold border border-theme transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:border-transparent"
+                            className="px-6 py-3 rounded-full font-semibold border border-theme transition-all duration-300 hover:text-white hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:border-transparent"
                         >
                             Download Resume
                         </a>
@@ -86,7 +86,7 @@ function Hero() {
                                 href={s.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 flex items-center justify-center rounded-full border border-theme text-theme-secondary transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:border-transparent"
+                                className="w-10 h-10 flex items-center justify-center rounded-full border border-theme text-theme-secondary transition-all duration-300 hover:text-white hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:border-transparent"
                             >
                                 {s.icon}
                             </a>
