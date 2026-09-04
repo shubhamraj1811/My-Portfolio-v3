@@ -42,18 +42,20 @@ function Navbar() {
                     Shubham
                 </span>
 
+                {/* Navigation Links */}
                 <div className="hidden lg:flex items-center gap-1">
                     {NAV_LINKS.map((link) => (
                         <button
                             key={link.id}
                             onClick={() => scrollToSection(link.id)}
-                            className="px-3 py-2 text-sm text-theme-secondary hover:text-theme-primary rounded-full hover:bg-white/10 transition-colors"
+                            className="px-3 py-2 text-sm text-theme-secondary rounded-full transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500"
                         >
                             {link.label}
                         </button>
                     ))}
                 </div>
 
+                {/* Hire Me Button */}
                 <div className="hidden lg:flex items-center gap-3">
                     <ThemeToggle />
                     <button
@@ -64,6 +66,7 @@ function Navbar() {
                     </button>
                 </div>
 
+                {/* Mobile Menu Button */}
                 <button
                     className="lg:hidden text-theme-primary text-2xl"
                     onClick={() => setIsOpen(!isOpen)}

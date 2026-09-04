@@ -67,43 +67,33 @@ function Hero() {
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 rounded-full font-semibold border border-theme hover:bg-white/10 transition-colors"
+                            className="px-6 py-3 rounded-full font-semibold border border-theme transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:border-transparent"
                         >
                             Download Resume
                         </a>
                     </div>
 
                     {/* ===== SOCIAL LINKS ===== */}
-                    <div className="flex gap-5 text-2xl text-theme-muted">
 
-                        {/* ===== GITHUB ===== */}
-                        <a
-                            href="https://github.com/shubhamraj1811"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-white transition-colors"
-                        >
-                            <FaGithub />
-                        </a>
-
-                        {/* ===== LINKEDIN ===== */}
-                        <a
-                            href="https://www.linkedin.com/in/shubham1811"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-white transition-colors"
-                        >
-                            <FaLinkedin />
-                        </a>
-
-                        {/* ===== EMAIL ===== */}
-                        <a
-                            href="mailto:ershubhcsofficial@gmail.com"
-                            className="hover:text-white transition-colors"
-                        >
-                            <FaEnvelope />
-                        </a>
+                    <div className="flex gap-3 text-lg">
+                        {[
+                            { icon: <FaGithub />, href: 'https://github.com/yourusername' },
+                            { icon: <FaLinkedin />, href: 'https://linkedin.com/in/yourusername' },
+                            { icon: <FaEnvelope />, href: 'mailto:youremail@example.com' },
+                        ].map((s, i) => (
+                            <a
+                                key={i}
+                                href={s.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 flex items-center justify-center rounded-full border border-theme text-theme-secondary transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:border-transparent"
+                            >
+                                {s.icon}
+                            </a>
+                        ))}
                     </div>
+
+                    
                 </div>
 
                 {/* RIGHT SIDE - Code Editor Card */}
