@@ -12,7 +12,7 @@ export const SKILLS = [
    {
       id: "android-sdk",
       name: "Android SDK",
-      icon: "🤖",
+      icon: "android",
       category: "Android",
       proficiency: 85,
       description: "Core Android development toolkit for building native apps.",
@@ -28,7 +28,7 @@ export const SKILLS = [
    {
       id: "android-studio",
       name: "Android Studio",
-      icon: "🛠️",
+      icon: "androidstudio",
       category: "Android",
       proficiency: 90,
       description: "Primary IDE for Android app development and debugging.",
@@ -44,7 +44,7 @@ export const SKILLS = [
    {
       id: "jetpack-compose",
       name: "Jetpack Compose",
-      icon: "⚡",
+      icon: "jetpackcompose",
       category: "Android",
       proficiency: 80,
       description: "Modern declarative UI toolkit I use to build Android UI.",
@@ -61,7 +61,7 @@ export const SKILLS = [
    {
       id: "activities-intents",
       name: "Activities & Intents",
-      icon: "📱",
+      icon: "layers",
       category: "Android",
       proficiency: 82,
       description:
@@ -78,7 +78,7 @@ export const SKILLS = [
    {
       id: "android-navigation",
       name: "Navigation",
-      icon: "🧭",
+      icon: "compass",
       category: "Android",
       proficiency: 78,
       description:
@@ -95,7 +95,7 @@ export const SKILLS = [
    {
       id: "coroutines",
       name: "Coroutines",
-      icon: "🔄",
+      icon: "refresh",
       category: "Android",
       proficiency: 75,
       description: "Kotlin's way of handling asynchronous programming.",
@@ -111,7 +111,7 @@ export const SKILLS = [
    {
       id: "flow",
       name: "Flow",
-      icon: "🌊",
+      icon: "waves",
       category: "Android",
       proficiency: 72,
       description: "Reactive streams for handling asynchronous data in Kotlin.",
@@ -129,7 +129,7 @@ export const SKILLS = [
    {
       id: "kotlin",
       name: "Kotlin",
-      icon: "🅺",
+      icon: "kotlin",
       category: "Language",
       proficiency: 90,
       description: "Primary language for Android development.",
@@ -145,7 +145,7 @@ export const SKILLS = [
    {
       id: "cpp",
       name: "C++",
-      icon: "➕",
+      icon: "cplusplus",
       category: "Language",
       proficiency: 80,
       description: "Used primarily for DSA and competitive programming.",
@@ -156,7 +156,7 @@ export const SKILLS = [
    {
       id: "python",
       name: "Python",
-      icon: "🐍",
+      icon: "python",
       category: "Language",
       proficiency: 75,
       description: "Used for scripting, automation, and AI/ML work.",
@@ -172,7 +172,7 @@ export const SKILLS = [
    {
       id: "sql",
       name: "SQL",
-      icon: "🗄️",
+      icon: "database",
       category: "Language",
       proficiency: 70,
       description: "Querying and managing relational databases.",
@@ -190,7 +190,7 @@ export const SKILLS = [
    {
       id: "mvvm",
       name: "MVVM",
-      icon: "🏗️",
+      icon: "boxes",
       category: "Architecture",
       proficiency: 82,
       description: "Architecture pattern I use to structure Android apps.",
@@ -206,7 +206,7 @@ export const SKILLS = [
    {
       id: "hilt",
       name: "Hilt",
-      icon: "💉",
+      icon: "syringe",
       category: "Architecture",
       proficiency: 70,
       description: "Dependency injection framework for Android.",
@@ -222,7 +222,7 @@ export const SKILLS = [
    {
       id: "state-management",
       name: "State Management",
-      icon: "🔀",
+      icon: "shuffle",
       category: "Architecture",
       proficiency: 78,
       description: "Managing UI state predictably across app components.",
@@ -237,7 +237,7 @@ export const SKILLS = [
    {
       id: "arch-navigation",
       name: "Navigation",
-      icon: "🧭",
+      icon: "compass",
       category: "Architecture",
       proficiency: 76,
       description: "Architectural approach to structuring app navigation flow.",
@@ -254,7 +254,7 @@ export const SKILLS = [
    {
       id: "room",
       name: "Room",
-      icon: "🏠",
+      icon: "database",
       category: "Database",
       proficiency: 80,
       description: "Android's persistence library built on top of SQLite.",
@@ -270,7 +270,7 @@ export const SKILLS = [
    {
       id: "sqlite",
       name: "SQLite",
-      icon: "🗃️",
+      icon: "sqlite",
       category: "Database",
       proficiency: 72,
       description: "Lightweight embedded relational database.",
@@ -281,7 +281,7 @@ export const SKILLS = [
    {
       id: "firebase",
       name: "Firebase",
-      icon: "🔥",
+      icon: "firebase",
       category: "Database",
       proficiency: 68,
       description: "Backend-as-a-service used for auth, database, and hosting.",
@@ -294,7 +294,7 @@ export const SKILLS = [
    {
       id: "git",
       name: "Git",
-      icon: "🔧",
+      icon: "git",
       category: "Tools",
       proficiency: 85,
       description: "Version control for tracking and managing code changes.",
@@ -305,7 +305,7 @@ export const SKILLS = [
    {
       id: "github",
       name: "GitHub",
-      icon: "🐙",
+      icon: "github",
       category: "Tools",
       proficiency: 85,
       description: "Hosting and collaboration platform for Git repositories.",
@@ -316,7 +316,7 @@ export const SKILLS = [
    {
       id: "github-actions",
       name: "GitHub Actions",
-      icon: "⚙️",
+      icon: "githubactions",
       category: "Tools",
       proficiency: 60,
       description: "CI/CD automation directly within GitHub.",

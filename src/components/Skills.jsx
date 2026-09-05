@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { SKILLS, CATEGORIES, getProficiencyInfo } from "../data/skillsData";
+import { SkillIcon } from "../data/skillIconMap";
 
+// ========== SKILL CARD ==========
 function SkillCard({ skill, onOpen }) {
    const prof = getProficiencyInfo(skill.proficiency);
    return (
@@ -10,12 +12,15 @@ function SkillCard({ skill, onOpen }) {
       hover:border-purple-400/50 hover:-translate-y-1 transition-all duration-300 group"
       >
          <div className="flex items-center gap-3 mb-4">
-            <span className="text-2xl">{skill.icon}</span>
+            {/* ========== SKILL ICON ========== */}
+            <SkillIcon iconKey={skill.icon} size={24} />
+            {/* ========== SKILL NAME ========== */}
             <span className="font-semibold text-theme-primary">
                {skill.name}
             </span>
          </div>
 
+         {/* ========== PROFICIENCY ========== */}
          <div className="flex items-center gap-2 mb-2">
             <span>{prof.dot}</span>
 
@@ -27,6 +32,7 @@ function SkillCard({ skill, onOpen }) {
             </span>
          </div>
 
+         {/* ========== PROFICIENCY BAR ========== */}
          <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden mb-4">
             <div
                className="h-full rounded-full transition-all duration-500"
@@ -36,7 +42,8 @@ function SkillCard({ skill, onOpen }) {
                }}
             />
          </div>
-
+            
+         {/* ========== VIEW DETAILS ========== */}
          <span className="text-sm text-theme-muted group-hover:text-theme-primary transition-colors flex items-center gap-1">
             View Details{" "}
             <span className="group-hover:translate-x-1 transition-transform">
@@ -47,6 +54,7 @@ function SkillCard({ skill, onOpen }) {
    );
 }
 
+// ========== SKILL MODAL ==========
 function SkillModal({ skill, onClose }) {
    useEffect(() => {
       const onKey = (e) => e.key === "Escape" && onClose();
@@ -71,7 +79,7 @@ function SkillModal({ skill, onClose }) {
          >
             <div className="flex items-start justify-between mb-4">
                <div className="flex items-center gap-3">
-                  <span className="text-3xl">{skill.icon}</span>
+                  <SkillIcon iconKey={skill.icon} size={30} />
 
                   <h3 className="text-xl font-bold text-theme-primary">
                      {skill.name}
