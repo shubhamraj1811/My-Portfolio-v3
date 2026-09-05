@@ -23,6 +23,7 @@ function SkillCard({ skill, isExpanded, onToggle }) {
             </span>
          </motion.div>
 
+         {/* === Proficiency === */}
          <motion.div layout="position" className="flex items-center gap-2 mb-2">
             <span>{prof.dot}</span>
             <span
@@ -61,6 +62,7 @@ function SkillCard({ skill, isExpanded, onToggle }) {
                      {skill.description}
                   </p>
 
+                  {/* === Knowledge === */}
                   <div className="grid sm:grid-cols-2 gap-6 mb-5">
                      {skill.knowledge?.length > 0 && (
                         <div>
@@ -81,39 +83,58 @@ function SkillCard({ skill, isExpanded, onToggle }) {
                         </div>
                      )}
 
-                     {skill.usedIn?.length > 0 && (
+                     {/* === Projects === */}
+
+                     {/* ================================ */}
+                     
+                     {skill.projects?.length > 0 && (
                         <div>
                            <p className="text-xs font-semibold tracking-widest text-purple-400 mb-2">
                               USED IN PROJECTS
                            </p>
-
                            <div className="space-y-2">
-                              {skill.usedIn.map((p) => (
-                                 <div
-                                    key={p}
-                                    className="flex items-center justify-between rounded-lg border border-theme px-3 py-2 text-sm text-theme-primary"
+                              {skill.projects.map((p) => (
+                                 <button
+                                    key={p.id}
+                                    onClick={(e) => {
+                                       e.stopPropagation()
+                                       const el = document.querySelector(p.link)
+                                       if (el) el.scrollIntoView({ behavior: 'smooth' })
+                                    }}
+                                    className="w-full flex items-center justify-between rounded-lg border border-theme px-3 py-2 text-sm text-theme-primary hover:bg-white/10 transition-colors"
                                  >
-                                    {p}{" "}
+                                    <span className="flex items-center gap-2">
+                                       <SkillIcon iconKey={p.icon} size={16} /> {p.name}
+                                    </span>
                                     <span className="text-purple-400">→</span>
-                                 </div>
+                                 </button>
                               ))}
                            </div>
                         </div>
                      )}
+
+                     {/* =========================================================== */}
+
                   </div>
 
-                  {/* ========== Project Link ========== */}
-                  {skill.projectLink && (
+                  {/* ========== DOCUMENTATION ========== */}
+
+                  {/* ===================================== */}
+                  
+                  {skill.documentation?.url && (
                      <a
-                        href={skill.projectLink}
+                        href={skill.documentation.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="inline-block px-4 py-2 rounded-full text-sm font-semibold border border-theme text-theme-secondary hover:bg-white/10 transition-colors"
                      >
-                        View Documentation ↗
+                        {skill.documentation.label} ↗
                      </a>
                   )}
+
+                  {/* ===================================== */}
+
                </motion.div>
             )}
          </AnimatePresence>
