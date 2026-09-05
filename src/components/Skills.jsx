@@ -1,39 +1,42 @@
 import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { SKILLS, CATEGORIES, getProficiencyInfo } from "../data/skillsData";
 import { SkillIcon } from "../data/skillIconMap";
 
-// ========== SKILL CARD ==========
-function SkillCard({ skill, onOpen }) {
+function SkillCard({ skill, isExpanded, onToggle }) {
    const prof = getProficiencyInfo(skill.proficiency);
+
    return (
-      <button
-         onClick={() => onOpen(skill)}
-         className="text-left rounded-2xl border border-theme bg-glass backdrop-blur-xl p-5
-      hover:border-purple-400/50 hover:-translate-y-1 transition-all duration-300 group"
+      // ========== Skill Card ==========
+      <motion.div
+         layout
+         transition={{ layout: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+         onClick={onToggle}
+         className={`cursor-pointer rounded-2xl border border-theme bg-glass backdrop-blur-xl p-5 overflow-hidden
+      hover:border-purple-400/50 transition-colors duration-300
+      ${isExpanded ? "col-span-full lg:col-span-2 lg:row-span-2" : ""}`}
       >
-         <div className="flex items-center gap-3 mb-4">
-            {/* ========== SKILL ICON ========== */}
+         <motion.div layout="position" className="flex items-center gap-3 mb-4">
             <SkillIcon iconKey={skill.icon} size={24} />
-            {/* ========== SKILL NAME ========== */}
-            <span className="font-semibold text-theme-primary">
+            <span className="font-semibold text-theme-primary text-lg">
                {skill.name}
             </span>
-         </div>
+         </motion.div>
 
-         {/* ========== PROFICIENCY ========== */}
-         <div className="flex items-center gap-2 mb-2">
+         <motion.div layout="position" className="flex items-center gap-2 mb-2">
             <span>{prof.dot}</span>
-
             <span
                className="text-xs font-semibold tracking-wide"
                style={{ color: prof.color }}
             >
                {prof.label.toUpperCase()}
             </span>
-         </div>
+         </motion.div>
 
-         {/* ========== PROFICIENCY BAR ========== */}
-         <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden mb-4">
+         <motion.div
+            layout="position"
+            className="w-full h-2 rounded-full bg-white/10 overflow-hidden mb-4"
+         >
             <div
                className="h-full rounded-full transition-all duration-500"
                style={{
@@ -41,136 +44,108 @@ function SkillCard({ skill, onOpen }) {
                   backgroundColor: prof.color,
                }}
             />
-         </div>
-            
-         {/* ========== VIEW DETAILS ========== */}
-         <span className="text-sm text-theme-muted group-hover:text-theme-primary transition-colors flex items-center gap-1">
-            View Details{" "}
-            <span className="group-hover:translate-x-1 transition-transform">
-               →
-            </span>
-         </span>
-      </button>
-   );
-}
+         </motion.div>
 
-// ========== SKILL MODAL ==========
-function SkillModal({ skill, onClose }) {
-   useEffect(() => {
-      const onKey = (e) => e.key === "Escape" && onClose();
+         {/* ========== Expanded Details ========== */}
+         <AnimatePresence>
+            {isExpanded && (
+               <motion.div
+                  key="details"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+               >
+                  <p className="text-theme-secondary text-sm leading-relaxed mb-5 pt-1">
+                     {skill.description}
+                  </p>
 
-      window.addEventListener("keydown", onKey);
+                  <div className="grid sm:grid-cols-2 gap-6 mb-5">
+                     {skill.knowledge?.length > 0 && (
+                        <div>
+                           <p className="text-xs font-semibold tracking-widest text-teal-400 mb-2">
+                              KEY KNOWLEDGE
+                           </p>
 
-      return () => window.removeEventListener("keydown", onKey);
-   }, [onClose]);
+                           <ul className="space-y-1">
+                              {skill.knowledge.map((k) => (
+                                 <li
+                                    key={k}
+                                    className="text-sm text-theme-secondary flex items-center gap-2"
+                                 >
+                                    <span className="text-teal-400">•</span> {k}
+                                 </li>
+                              ))}
+                           </ul>
+                        </div>
+                     )}
 
-   if (!skill) return null;
+                     {skill.usedIn?.length > 0 && (
+                        <div>
+                           <p className="text-xs font-semibold tracking-widest text-purple-400 mb-2">
+                              USED IN PROJECTS
+                           </p>
 
-   const prof = getProficiencyInfo(skill.proficiency);
+                           <div className="space-y-2">
+                              {skill.usedIn.map((p) => (
+                                 <div
+                                    key={p}
+                                    className="flex items-center justify-between rounded-lg border border-theme px-3 py-2 text-sm text-theme-primary"
+                                 >
+                                    {p}{" "}
+                                    <span className="text-purple-400">→</span>
+                                 </div>
+                              ))}
+                           </div>
+                        </div>
+                     )}
+                  </div>
 
-   return (
-      <div
-         className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-         onClick={onClose}
-      >
-         <div
-            className="w-full max-w-md rounded-2xl border border-theme bg-glass-scrolled backdrop-blur-2xl p-6 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
+                  {/* ========== Project Link ========== */}
+                  {skill.projectLink && (
+                     <a
+                        href={skill.projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-block px-4 py-2 rounded-full text-sm font-semibold border border-theme text-theme-secondary hover:bg-white/10 transition-colors"
+                     >
+                        View Documentation ↗
+                     </a>
+                  )}
+               </motion.div>
+            )}
+         </AnimatePresence>
+
+         {/* ========== Toggle Button ========== */}
+         <motion.button
+            layout="position"
+            onClick={(e) => {
+               e.stopPropagation();
+               onToggle();
+            }}
+            className="text-sm text-theme-muted hover:text-theme-primary transition-colors flex items-center gap-1 mt-3"
          >
-            <div className="flex items-start justify-between mb-4">
-               <div className="flex items-center gap-3">
-                  <SkillIcon iconKey={skill.icon} size={30} />
-
-                  <h3 className="text-xl font-bold text-theme-primary">
-                     {skill.name}
-                  </h3>
-               </div>
-
-               <button
-                  onClick={onClose}
-                  className="text-theme-muted hover:text-theme-primary text-xl leading-none"
-               >
-                  ✕
-               </button>
-            </div>
-
-            <div className="flex items-center gap-2 mb-4">
-               <span>{prof.dot}</span>
-
-               <span
-                  className="text-xs font-semibold tracking-wide"
-                  style={{ color: prof.color }}
-               >
-                  {prof.label.toUpperCase()}
-               </span>
-            </div>
-
-            <p className="text-theme-secondary leading-relaxed mb-5">
-               {skill.description}
-            </p>
-
-            {skill.knowledge?.length > 0 && (
-               <div className="mb-5">
-                  <p className="text-xs font-semibold tracking-widest text-theme-muted mb-2">
-                     KNOWLEDGE
-                  </p>
-
-                  <ul className="space-y-1">
-                     {skill.knowledge.map((k) => (
-                        <li
-                           key={k}
-                           className="text-sm text-theme-secondary flex items-center gap-2"
-                        >
-                           <span className="text-teal-400">•</span> {k}
-                        </li>
-                     ))}
-                  </ul>
-               </div>
+            {isExpanded ? (
+               <>
+                  Collapse <span>↑</span>
+               </>
+            ) : (
+               <>
+                  View Details <span>→</span>
+               </>
             )}
-
-            {skill.usedIn?.length > 0 && (
-               <div className="mb-5">
-                  <p className="text-xs font-semibold tracking-widest text-theme-muted mb-2">
-                     USED IN
-                  </p>
-
-                  <ul className="space-y-1">
-                     {skill.usedIn.map((p) => (
-                        <li
-                           key={p}
-                           className="text-sm text-theme-secondary flex items-center gap-2"
-                        >
-                           <span className="text-purple-400">→</span> {p}
-                        </li>
-                     ))}
-                  </ul>
-               </div>
-            )}
-
-            {skill.projectLink && (
-               <a
-                  href={skill.projectLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-full text-center px-5 py-2.5 rounded-full font-semibold
-
-                bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
-               >
-                  View Project →
-               </a>
-            )}
-         </div>
-      </div>
+         </motion.button>
+      </motion.div>
    );
 }
 
+// ========= Skills Component ==========
 function Skills() {
    const [activeCategory, setActiveCategory] = useState("All");
-
    const [query, setQuery] = useState("");
-
-   const [selectedSkill, setSelectedSkill] = useState(null);
-
+   const [expandedId, setExpandedId] = useState(null);
    const searchRef = useRef(null);
 
    useEffect(() => {
@@ -181,7 +156,6 @@ function Skills() {
 
          if (e.key === "/" && !isTyping) {
             e.preventDefault();
-
             searchRef.current?.focus();
          }
       };
@@ -200,6 +174,10 @@ function Skills() {
       return matchesCategory && matchesQuery;
    });
 
+   const toggleExpand = (id) =>
+      setExpandedId((curr) => (curr === id ? null : id));
+
+   // ======== Render ==========
    return (
       <section id="skills" className="min-h-screen px-6 lg:px-16 py-24">
          <div className="max-w-6xl mx-auto">
@@ -212,8 +190,6 @@ function Skills() {
                   My Technical Stack & Current Proficiency
                </h2>
             </div>
-
-            {/* Search + filters */}
 
             <div className="flex flex-col gap-4 mb-10">
                <div className="relative max-w-md mx-auto w-full">
@@ -228,7 +204,6 @@ function Skills() {
                      onChange={(e) => setQuery(e.target.value)}
                      placeholder="Search skills... (press /)"
                      className="w-full pl-11 pr-4 py-3 rounded-full border border-theme bg-glass backdrop-blur-xl
-
               text-theme-primary placeholder:text-theme-muted focus:outline-none focus:border-purple-400/60"
                   />
                </div>
@@ -237,9 +212,11 @@ function Skills() {
                   {CATEGORIES.map((cat) => (
                      <button
                         key={cat}
-                        onClick={() => setActiveCategory(cat)}
+                        onClick={() => {
+                           setActiveCategory(cat);
+                           setExpandedId(null);
+                        }}
                         className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300
-
                 ${
                    activeCategory === cat
                       ? "bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white border-transparent"
@@ -252,15 +229,17 @@ function Skills() {
                </div>
             </div>
 
-            {/* Cards */}
-
             {filtered.length > 0 ? (
-               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+               <div
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  style={{ gridAutoFlow: "dense" }}
+               >
                   {filtered.map((skill) => (
                      <SkillCard
                         key={skill.id}
                         skill={skill}
-                        onOpen={setSelectedSkill}
+                        isExpanded={expandedId === skill.id}
+                        onToggle={() => toggleExpand(skill.id)}
                      />
                   ))}
                </div>
@@ -270,11 +249,6 @@ function Skills() {
                </div>
             )}
          </div>
-
-         <SkillModal
-            skill={selectedSkill}
-            onClose={() => setSelectedSkill(null)}
-         />
       </section>
    );
 }
