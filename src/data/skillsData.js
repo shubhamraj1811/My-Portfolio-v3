@@ -9,54 +9,43 @@ export const CATEGORIES = [
 
 export const SKILLS = [
    // Android
+   // === Android SDK ===
    {
       id: "android-sdk",
       name: "Android SDK",
       icon: "android",
       category: "Android",
-      proficiency: 85,
-      description: "Core Android development toolkit for building native apps.",
+      proficiency: 65,
+      description:
+         "Foundational Android APIs and components used to build native applications.",
       knowledge: [
-         "App lifecycle",
+         "Activities & lifecycle",
+         "Intents & navigation",
          "Manifest & permissions",
-         "Background services",
-         "UI toolkit basics",
+         "Resources & app configuration",
       ],
       usedIn: ["NodeBook", "CookBook"],
-      projectLink: "",
+      projectLink:
+         "https://app.notion.com/p/Android-SDK-3d27fb020b3d80a3a119c79e7a8487dd?source=copy_link",
    },
-   {
-      id: "android-studio",
-      name: "Android Studio",
-      icon: "androidstudio",
-      category: "Android",
-      proficiency: 90,
-      description: "Primary IDE for Android app development and debugging.",
-      knowledge: [
-         "Layout editor",
-         "Logcat & debugging",
-         "Gradle build system",
-         "Profiler tools",
-      ],
-      usedIn: ["NodeBook", "CookBook"],
-      projectLink: "",
-   },
+   // === Jetpack Compse ===
    {
       id: "jetpack-compose",
       name: "Jetpack Compose",
       icon: "jetpackcompose",
       category: "Android",
-      proficiency: 80,
-      description: "Modern declarative UI toolkit I use to build Android UI.",
+      proficiency: 55,
+      description:
+         "Building modern Android interfaces with Compose's declarative UI approach.",
       knowledge: [
          "Composable functions",
-         "State management",
-         "LazyColumn",
-         "Material 3",
-         "Navigation Compose",
+         "Basic state & recomposition",
+         "Layouts & modifiers",
+         "Material 3 UI",
+         "LazyColumn & LazyRow",
       ],
       usedIn: ["NodeBook", "CookBook"],
-      projectLink: "",
+      projectLink: "https://github.com/shubhamraj1811/NodeBook",
    },
    {
       id: "activities-intents",
