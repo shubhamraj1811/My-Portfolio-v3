@@ -1,10 +1,14 @@
 export const TIMELINE = [
-    // === CLASS 10 ===
+   // === EDUCATION ===
    {
+    // === CLASS 10 ===
       id: "class10",
       category: "Academic",
       title: "Class 10th",
-      meta: ["CBSE", "KV School", "2020"],
+      meta: ["CBSE", "KV School"],
+      duration: "2020",
+      description:
+         "Completed secondary education with a strong foundation across core subjects.",
       details: [{ label: "Percentage", value: "90%" }],
    },
    // === CLASS 12 ===
@@ -12,7 +16,10 @@ export const TIMELINE = [
       id: "class12",
       category: "Academic",
       title: "Class 12th",
-      meta: ["BSEB", "COC", "2020 — 2022"],
+      meta: ["BSEB", "COC"],
+      duration: "2020 — 2022",
+      description:
+         "Completed higher secondary education, building the fundamentals that led into engineering.",
       details: [{ label: "Percentage", value: "78%" }],
    },
    // === B.TECH ===
@@ -20,7 +27,10 @@ export const TIMELINE = [
       id: "btech",
       category: "Academic",
       title: "B.Tech — Computer Science (AI)",
-      meta: ["GEC Lakhisarai", "2023 — 2027"],
+      meta: ["GEC Lakhisarai"],
+      duration: "2023 — 2027",
+      description:
+         "Pursuing a specialization in Computer Science with a focus on Artificial Intelligence, alongside hands-on Android development.",
       details: [{ label: "CGPA", value: "7.99" }],
       coursework: ["DSA", "DBMS", "OOP", "OS", "CN"],
       semesterBreakdown: [
@@ -36,7 +46,10 @@ export const TIMELINE = [
       id: "hackathon",
       category: "Journey",
       title: "Google Developer Solutions Hackathon",
-      meta: ["Building, collaboration and problem solving"],
+      meta: [],
+      duration: "Hackathon",
+      description:
+         "Collaborated in a team to design and build a solution under time pressure, focused on real-world problem solving.",
       details: [
          { label: "Team", value: "Shubham Raj, Prince Raj, Aman Kumar" },
          { label: "Project", value: "Details coming soon" },
@@ -48,7 +61,10 @@ export const TIMELINE = [
       category: "Learning",
       title: "Exploring Web Development & React",
       meta: [],
-      details: [{ label: "Description", value: "Details coming soon" }],
+      duration: "Ongoing",
+      description:
+         "Expanding into web development, learning React fundamentals and building this very portfolio as part of the process.",
+      details: [],
       techStack: ["React", "JavaScript", "Tailwind CSS"],
    },
    // === ANDROID DEVELOPMENT ===
@@ -57,7 +73,10 @@ export const TIMELINE = [
       category: "Current Focus",
       title: "Android Development",
       meta: [],
-      details: [{ label: "Focus", value: "Building native Android apps" }],
+      duration: "Present",
+      description:
+         "Currently focused on building native Android applications with a modern, declarative UI approach.",
+      details: [],
       techStack: ["Kotlin", "Jetpack Compose"],
       current: true,
    },
