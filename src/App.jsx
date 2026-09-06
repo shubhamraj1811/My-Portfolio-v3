@@ -4,9 +4,9 @@ import Hero from './components/Hero'
 import AboutMe from './components/AboutMe'
 import Skills from './components/Skills'
 import CursorFollower from './components/CursorFollower'
+import Education from './components/Education'
 
 const sections = [
-    { id: 'education', label: 'Education Timeline' },
     { id: 'projects', label: 'Projects' },
     { id: 'certificates', label: 'Certificates' },
     { id: 'coding-profile', label: 'Coding Profile' },
@@ -22,6 +22,7 @@ function App() {
             <Hero />
             <AboutMe />
             <Skills />
+            <Education />
 
             {sections.map((s) => (
                 <section

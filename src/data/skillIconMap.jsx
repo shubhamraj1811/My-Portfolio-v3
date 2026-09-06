@@ -12,6 +12,7 @@ import {
     NotebookText, ChefHat, FileCode, Flame,
 } from 'lucide-react'
 
+import { GraduationCap, Trophy, Code, Rocket } from 'lucide-react'
 
 // ================ SKILL ICON MAP =================
 export const skillIconMap = {
@@ -77,4 +78,12 @@ export function SkillIcon({ iconKey, size = 24 }) {
     const icon = skillIconMap[iconKey]
     if (!icon) return null
     return <span style={{ fontSize: size, display: 'inline-flex' }}>{icon}</span>
+}
+
+// ================ CATEGORY ICON MAP =================
+export const categoryIconMap = {
+    graduationcap: <GraduationCap size={18} />,
+    trophy: <Trophy size={18} />,
+    code: <Code size={18} />,
+    rocket: <Rocket size={18} />,
 }
