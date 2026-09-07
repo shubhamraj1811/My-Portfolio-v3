@@ -72,9 +72,14 @@ h1, h2, h3, h4 {
     rgba(16, 220, 150, 0.65) 100%
   );
   background-size: 300% 300%;
-  filter: blur(60px) saturate(1.35) brightness(0.95);
+  filter: blur(60px) saturate(1.35) brightness(0.78);
+  transition: filter 1s ease;
   animation: fluidDrift 40s ease-in-out infinite alternate;
   will-change: background-position;
+}
+
+html.light .fluid-field {
+  filter: blur(60px) saturate(1.35) brightness(0.95);
 }
 
 .fluid-field::after {
@@ -91,8 +96,15 @@ h1, h2, h3, h4 {
   );
   background-size: 280% 280%;
   mix-blend-mode: screen;
+  filter: brightness(0.78);
+  transition: filter 1s ease;
   animation: fluidDrift2 52s ease-in-out infinite alternate;
 }
+
+html.light .fluid-field::after {
+  filter: brightness(1);
+}
+
 
 .fluid-wash {
   display: none;
