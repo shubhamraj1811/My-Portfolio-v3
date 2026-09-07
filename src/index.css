@@ -123,6 +123,7 @@ html.light .gradient-blob {
 
 /* Ambient gradient border — reveals ONLY on the border ring via mask-composite,
    so it can never bleed into or tint the card's interior/background. */
+
 .project-card {
   position: relative;
   isolation: isolate;
@@ -135,9 +136,13 @@ html.light .gradient-blob {
   border-radius: inherit;
   padding: 1.5px;
   background: linear-gradient(90deg, #2dd4bf, #8b5cf6, #ec4899);
+
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
+
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
+
   opacity: 0;
   transition: opacity 400ms ease;
   pointer-events: none;

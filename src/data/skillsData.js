@@ -394,6 +394,7 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   /*
    {
       id: "firebase",
       name: "Firebase",
@@ -411,6 +412,9 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
+   /*
    {
       id: "firestore",
       name: "Firestore",
@@ -428,6 +432,7 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
 
    // ================= LANGUAGE =================
 
@@ -480,6 +485,7 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   /*
    {
       id: "cpp",
       name: "C++",
@@ -497,6 +503,9 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
+   /*
    {
       id: "c",
       name: "C",
@@ -514,6 +523,8 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
    {
       id: "sql",
       name: "SQL",
@@ -551,6 +562,8 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+
+   /*
    {
       id: "retrofit",
       name: "Retrofit",
@@ -568,6 +581,8 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
    {
       id: "json",
       name: "JSON",
@@ -585,6 +600,8 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+
+   /*
    {
       id: "http",
       name: "HTTP",
@@ -602,6 +619,9 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
+   /*
    {
       id: "okhttp",
       name: "OkHttp",
@@ -619,6 +639,7 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
 
    // ================= TESTING =================
 
@@ -639,6 +660,8 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+
+   /*
    {
       id: "androidx-test",
       name: "AndroidX Test",
@@ -656,6 +679,9 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
+   /*
    {
       id: "espresso",
       name: "Espresso",
@@ -673,6 +699,9 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
+   /*
    {
       id: "compose-ui-testing",
       name: "Compose UI Testing",
@@ -690,6 +719,7 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
 
    // ================= TOOLS =================
 
@@ -770,6 +800,8 @@ export const SKILLS = [
          },
       ],
    },
+
+   /*
    {
       id: "gradle",
       name: "Gradle",
@@ -787,6 +819,9 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
+   /*
    {
       id: "adb",
       name: "ADB",
@@ -804,6 +839,9 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+
+
    {
       id: "android-emulator",
       name: "Android Emulator",
@@ -821,6 +859,8 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+
+   /*
    {
       id: "github-actions",
       name: "GitHub Actions",
@@ -838,6 +878,8 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+   */
+  
 ];
 
 // ================= UTILS =================
