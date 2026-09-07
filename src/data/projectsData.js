@@ -12,6 +12,9 @@ export const PROJECTS = [
          { src: "", alt: "NodeBook — all notes screen" },
          { src: "", alt: "NodeBook — note editor screen" },
          { src: "", alt: "NodeBook — search screen" },
+         { src: "", alt: "NodeBook — search screen" },
+         { src: "", alt: "NodeBook — search screen" },
+         { src: "", alt: "NodeBook — search screen" },
       ],
       features: [
          { icon: "filetext", text: "Create & organize notes" },
@@ -32,9 +35,9 @@ export const PROJECTS = [
          "Android application",
       ],
       technologies: ["Kotlin", "Jetpack Compose", "Room", "MVVM", "Coroutines"],
-      githubUrl: "",
-      liveUrl: "",
-      apkUrl: "",
+      githubUrl: "https://github.com/abcd",
+      liveUrl: "dfsdfs",
+      apkUrl: "czxcxz",
       metadata: {
          role: "Android Developer",
          type: "Personal Project",

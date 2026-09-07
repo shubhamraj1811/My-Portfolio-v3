@@ -67,8 +67,8 @@ import {
    CheckCircle2,
    Smartphone as SmartphoneIcon,
 } from "lucide-react";
-// Bug Fix 
-import { SiGithub as SiGithubBrand } from 'react-icons/si'
+// Bug Fix
+import { SiGithub as SiGithubBrand } from "react-icons/si";
 
 // ================ SKILL ICON MAP =================
 export const skillIconMap = {
@@ -169,4 +169,20 @@ export const uiIconMap = {
    duration: <Clock size={18} />,
    status: <CheckCircle2 size={18} />,
    platform: <SmartphoneIcon size={18} />,
+};
+
+// Maps a technology's display name (as used in projectsData.js) to an existing icon key above.
+// Falls back gracefully — if a name isn't listed, the chip just renders without an icon.
+export const TECH_ICON_KEY = {
+   Kotlin: "kotlin",
+   "Jetpack Compose": "jetpackcompose",
+   Room: "database",
+   MVVM: "boxes",
+   Coroutines: "refresh",
+   Retrofit: "network",
+   Python: "python",
+   "C++": "cplusplus",
+   Firebase: "firebase",
+   Git: "git",
+   GitHub: "github",
 };
