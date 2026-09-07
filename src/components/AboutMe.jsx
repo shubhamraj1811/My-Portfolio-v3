@@ -51,7 +51,7 @@ function AboutMe() {
             {/* Profile + Story */}
             <div className="grid lg:grid-cols-[1fr_1.5fr] gap-6 mb-6">
                {/* Profile card */}
-               <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6 flex flex-col items-center text-center">
+                <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6 flex flex-col items-center text-center">
                   <div className="flex items-center gap-2 self-start mb-6">
                      <IconBox emoji="👤" />
                      <span className="text-sm font-semibold tracking-wide text-theme-secondary">
@@ -83,7 +83,7 @@ function AboutMe() {
                </div>
 
                {/* My Story card */}
-               <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
+               <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
                   <div className="flex items-center gap-2 mb-6">
                      <IconBox emoji="📖" />
                      <span className="text-sm font-semibold tracking-wide text-theme-secondary">
@@ -142,7 +142,7 @@ function AboutMe() {
             </div>
 
             {/* Key Highlights */}
-            <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6 mb-6">
+            <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6 mb-6">
                <div className="flex items-center gap-2 mb-5">
                   <IconBox emoji="⭐" />
                   <span className="text-sm font-semibold tracking-wide text-theme-secondary">
@@ -164,7 +164,7 @@ function AboutMe() {
 
             {/* Mission + Vision */}
             <div className="grid sm:grid-cols-2 gap-6 mb-6">
-               <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
+               <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
                   <div className="flex items-center gap-2 mb-4">
                      <IconBox emoji="🎯" />
                      <span className="text-sm font-semibold tracking-wide text-theme-secondary">
@@ -176,7 +176,8 @@ function AboutMe() {
                   </p>
                </div>
 
-               <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
+               {/* === My Vision === */}
+               <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
                   <div className="flex items-center gap-2 mb-4">
                      <IconBox emoji="🔮" />
                      <span className="text-sm font-semibold tracking-wide text-theme-secondary">
@@ -190,7 +191,7 @@ function AboutMe() {
             </div>
 
             {/* What I Believe */}
-            <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6 mb-6">
+            <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6 mb-6">
                <div className="flex items-center gap-2 mb-5">
                   <IconBox emoji="💡" />
                   <span className="text-sm font-semibold tracking-wide text-theme-secondary">
@@ -212,7 +213,7 @@ function AboutMe() {
             </div>
 
             {/* Currently Focused On */}
-            <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
+            <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
                <div className="flex items-center gap-2 mb-5 justify-center">
                   <IconBox emoji="🚀" />
                   <span className="text-sm font-semibold tracking-wide text-theme-secondary">
