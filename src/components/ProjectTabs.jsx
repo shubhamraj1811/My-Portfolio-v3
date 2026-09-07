@@ -29,14 +29,14 @@ function ProjectTabs({ project }) {
                   {active === tab && (
                      <motion.div
                         layoutId={`tab-underline-${project.id}`}
-                        className="absolute left-0 right-0 -bottom-px h-0.5 bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 rounded-full"
+                        className="absolute left-0 right-0 -bottom-px h-0.5 bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 rounded-full"
                      />
                   )}
                </button>
             ))}
          </div>
 
-         <div className="relative min-h-[240px] sm:min-h-[260px]">
+         <div className="relative min-h-240px sm:min-h-260px">
             <AnimatePresence mode="wait">
                <motion.div
                   key={active}

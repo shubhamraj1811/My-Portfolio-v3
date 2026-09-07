@@ -120,3 +120,29 @@ html.light .gradient-blob {
   75%  { transform: translate(80px, 40px) scale(1.05) rotate(5deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
+
+/* Ambient gradient border — reveals ONLY on the border ring via mask-composite,
+   so it can never bleed into or tint the card's interior/background. */
+.project-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(90deg, #2dd4bf, #8b5cf6, #ec4899);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
