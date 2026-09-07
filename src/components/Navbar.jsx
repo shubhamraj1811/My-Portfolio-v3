@@ -79,9 +79,22 @@ function Navbar() {
                   <button
                      key={link.id}
                      onClick={() => scrollToSection(link.id)}
-                     className="px-3 py-2 text-sm text-theme-secondary rounded-full transition-all duration-300 hover:text-white hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500"
+                     className="relative px-3 py-2 text-sm text-theme-secondary rounded-full transition-all duration-300 hover:text-white hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500"
                   >
                      {link.label}
+                     {activeSection === link.id && (
+                        <motion.div
+                           layoutId="nav-active-underline-desktop"
+                           transition={{
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 32,
+                           }}
+                           className="absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full
+                           bg-linear-to-r from-teal-400 via-purple-500 to-pink-500
+                           shadow-[0_0_6px_1px_rgba(139,92,246,0.5)]"
+                        />
+                     )}
                   </button>
                ))}
             </div>
@@ -120,15 +133,15 @@ function Navbar() {
                      {link.label}
                      {activeSection === link.id && (
                         <motion.div
-                           layoutId="nav-active-underline"
+                           layoutId="nav-active-underline-mobile"
                            transition={{
                               type: "spring",
                               stiffness: 380,
                               damping: 32,
                            }}
-                           className="absolute left-3 right-3 -bottom-0.5 h-2px rounded-full
-                  bg-linear-to-r from-teal-400 via-purple-500 to-pink-500
-                  shadow-[0_0_6px_1px_rgba(139,92,246,0.5)]"
+                           className="absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full
+                           bg-linear-to-r from-teal-400 via-purple-500 to-pink-500
+                           shadow-[0_0_6px_1px_rgba(139,92,246,0.5)]"
                         />
                      )}
                   </button>

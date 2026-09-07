@@ -381,8 +381,8 @@ function Education() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-6">
-               {/* Academic Profile */}
-               <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
+               {/* === Academic Profile === */}
+               <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
                   <p className="text-xs font-semibold tracking-widest text-teal-400 mb-4">
                      ACADEMIC PROFILE
                   </p>
@@ -421,8 +421,9 @@ function Education() {
                   </div>
                </div>
 
-               {/* Semester Performance */}
-               <div className="rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
+               {/* === Semester Performance === */}
+
+               <div className="project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-6">
                   <p className="text-xs font-semibold tracking-widest text-purple-400 mb-4">
                      SEMESTER PERFORMANCE
                   </p>

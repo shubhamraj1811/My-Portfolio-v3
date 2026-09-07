@@ -12,7 +12,7 @@ function SkillCard({ skill, isExpanded, onToggle }) {
          layout
          transition={{ layout: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
          onClick={onToggle}
-         className={`cursor-pointer rounded-2xl border border-theme bg-glass backdrop-blur-xl p-5 overflow-hidden
+         className={`cursor-pointer project-card rounded-2xl border border-theme bg-glass backdrop-blur-xl p-5 overflow-hidden
       hover:border-purple-400/50 transition-colors duration-300
       ${isExpanded ? "col-span-full lg:col-span-2 lg:row-span-2" : ""}`}
       >
