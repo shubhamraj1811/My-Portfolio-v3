@@ -1,4 +1,4 @@
-import profileImage from "../assets/profile.jpg";
+import profileImage from "../assets/Profile/profile.jpg";
 
 // Highlights of my journey and achievements
 const HIGHLIGHTS = [

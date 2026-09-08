@@ -6,9 +6,9 @@ import Skills from './components/Skills'
 import CursorFollower from './components/CursorFollower'
 import Education from './components/Education'
 import Projects from './components/Projects'
+import Certificates from './components/Certificates'
 
 const sections = [
-    { id: 'certificates', label: 'Certificates' },
     { id: 'coding-profile', label: 'Coding Profile' },
     { id: 'contact', label: 'Contact Me' },
 ]
@@ -24,6 +24,7 @@ function App() {
             <Skills />
             <Education />
             <Projects />
+            <Certificates />
 
             {sections.map((s) => (
                 <section

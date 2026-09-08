@@ -186,3 +186,20 @@ export const TECH_ICON_KEY = {
    Git: "git",
    GitHub: "github",
 };
+
+// CERTIFICATES AND ACHIEVEMENTS ICON MAP
+import { Award, ExternalLink, ArrowLeft, Maximize2 } from "lucide-react";
+
+export const certIconMap = {
+   git: <SiGit className="text-orange-500" />,
+   code: <Code className="text-teal-400" />,
+   trophy: <Trophy className="text-purple-400" />,
+   android: <SiAndroid className="text-green-400" />,
+};
+
+export const certUiIconMap = {
+   award: <Award size={14} />,
+   externallink: <ExternalLink size={16} />,
+   arrowleft: <ArrowLeft size={16} />,
+   maximize: <Maximize2 size={16} />,
+};
