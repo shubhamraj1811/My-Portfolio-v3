@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ITEMS, TYPE_LABELS, TYPE_COLORS } from "../data/certificatesData";
 import { certIconMap, certUiIconMap } from "../data/skillIconMap";
@@ -257,6 +257,11 @@ function Certificates() {
    const [selectedId, setSelectedId] = useState(
       ITEMS.find((i) => i.featured)?.id || ITEMS[0]?.id,
    );
+   const [fadeTop, setFadeTop] = useState(false);
+   const [fadeBottom, setFadeBottom] = useState(false);
+
+   const scrollContainerRef = useRef(null);
+   const itemRefs = useRef({});
 
    const filtered = ITEMS.filter((i) => {
       if (filter === "All") return true;
@@ -266,6 +271,17 @@ function Certificates() {
 
    const selected = ITEMS.find((i) => i.id === selectedId) || filtered[0];
    const selectedIndex = ITEMS.findIndex((i) => i.id === selected?.id);
+
+   const updateFades = useCallback(() => {
+      const el = scrollContainerRef.current;
+      if (!el) return;
+      setFadeTop(el.scrollTop > 4);
+      setFadeBottom(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
+   }, []);
+
+   useEffect(() => {
+      updateFades();
+   }, [filtered, updateFades]);
 
    const handleFilter = (f) => {
       setFilter(f);
@@ -277,6 +293,14 @@ function Certificates() {
       if (!nextList.find((i) => i.id === selectedId) && nextList.length > 0) {
          setSelectedId(nextList[0].id);
       }
+   };
+
+   const handleSelect = (id) => {
+      setSelectedId(id);
+      itemRefs.current[id]?.scrollIntoView({
+         behavior: "smooth",
+         block: "nearest",
+      });
    };
 
    return (
@@ -297,11 +321,11 @@ function Certificates() {
                      key={f}
                      onClick={() => handleFilter(f)}
                      className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300
-               ${
-                  filter === f
-                     ? "bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white border-transparent"
-                     : "border-theme text-theme-secondary hover:text-theme-primary hover:bg-white/10"
-               }`}
+              ${
+                 filter === f
+                    ? "bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white border-transparent"
+                    : "border-theme text-theme-secondary hover:text-theme-primary hover:bg-white/10"
+              }`}
                   >
                      {f.toUpperCase()}
                   </button>
@@ -336,25 +360,41 @@ function Certificates() {
                      </span>
                   </div>
 
-                  <AnimatePresence mode="popLayout">
-                     <motion.div
-                        key={filter}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex flex-col gap-3 max-h-520px overflow-y-auto pr-1"
-                     >
-                        {filtered.map((item) => (
-                           <LibraryItem
-                              key={item.id}
-                              item={item}
-                              isActive={item.id === selectedId}
-                              onClick={() => setSelectedId(item.id)}
-                           />
-                        ))}
-                     </motion.div>
-                  </AnimatePresence>
+                  <div className="relative">
+                     <div
+                        className={`library-fade-top ${fadeTop ? "visible" : ""}`}
+                     />
+
+                     <AnimatePresence mode="popLayout">
+                        <motion.div
+                           key={filter}
+                           ref={scrollContainerRef}
+                           onScroll={updateFades}
+                           initial={{ opacity: 0 }}
+                           animate={{ opacity: 1 }}
+                           exit={{ opacity: 0 }}
+                           transition={{ duration: 0.3 }}
+                           className="library-scroll flex flex-col gap-3 h-[300px] sm:h-[420px] lg:h-[480px] overflow-y-auto overflow-x-hidden pr-2"
+                        >
+                           {filtered.map((item) => (
+                              <div
+                                 key={item.id}
+                                 ref={(el) => (itemRefs.current[item.id] = el)}
+                              >
+                                 <LibraryItem
+                                    item={item}
+                                    isActive={item.id === selectedId}
+                                    onClick={() => handleSelect(item.id)}
+                                 />
+                              </div>
+                           ))}
+                        </motion.div>
+                     </AnimatePresence>
+
+                     <div
+                        className={`library-fade-bottom ${fadeBottom ? "visible" : ""}`}
+                     />
+                  </div>
                </div>
             </div>
          </div>

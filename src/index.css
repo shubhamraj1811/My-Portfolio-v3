@@ -157,3 +157,53 @@ html.light .fluid-field::after {
 .project-card:hover::before {
   opacity: 1;
 }
+
+/* Premium thin scrollbar for the certificates library panel */
+.library-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.4) transparent;
+}
+
+.library-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.library-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.library-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.5), rgba(139, 92, 246, 0.5), rgba(236, 72, 153, 0.5));
+  border-radius: 999px;
+}
+
+.library-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.7), rgba(139, 92, 246, 0.7), rgba(236, 72, 153, 0.7));
+}
+
+.library-fade-top,
+.library-fade-bottom {
+  position: absolute;
+  left: 0;
+  right: 6px;
+  height: 32px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.library-fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-bg), transparent);
+}
+
+.library-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-bg), transparent);
+}
+
+.library-fade-top.visible,
+.library-fade-bottom.visible {
+  opacity: 0.9;
+}

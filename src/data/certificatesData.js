@@ -1,3 +1,5 @@
+import git from "../assets/Certificates/git.png";
+
 export const ITEMS = [
    {
       type: "certificate",
@@ -8,7 +10,7 @@ export const ITEMS = [
       description:
          "Hands-on certification covering version control fundamentals, branching strategies, and collaborative workflows using Git and GitHub.",
       icon: "git",
-      image: "",
+      image: git,
       duration: "",
       skills: ["Git", "GitHub", "Version Control"],
       credentialId: "",
