@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ITEMS, TYPE_LABELS, TYPE_COLORS } from "../data/certificatesData";
 import { certIconMap, certUiIconMap } from "../data/skillIconMap";
 import CertificateLightbox from "./CertificateLightbox";
@@ -27,6 +27,8 @@ function TypeChip({ type, featured }) {
 function ShowcaseCard({ item, index, total }) {
    const [flipped, setFlipped] = useState(false);
    const [lightboxOpen, setLightboxOpen] = useState(false);
+   const shouldReduceMotion = useReducedMotion();
+
    const isCert = item.type === "certificate";
    const backImage = isCert ? item.image : item.proofImage;
    const ctaLabel = isCert
@@ -35,9 +37,149 @@ function ShowcaseCard({ item, index, total }) {
         ? "View Proof"
         : "View Achievement";
 
+   useEffect(() => setFlipped(false), [item.id]);
+
+   const frontContent = (
+      <>
+         <div className="flex items-center justify-between mb-5">
+            <TypeChip type={item.type} featured={item.featured} />
+            <span className="text-xs text-theme-muted">
+               {String(index + 1).padStart(2, "0")} /{" "}
+               {String(total).padStart(2, "0")}
+            </span>
+         </div>
+
+         <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme flex items-center justify-center text-3xl mb-5">
+            {certIconMap[item.icon]}
+         </div>
+
+         {!isCert && item.metric && (
+            <p className="text-3xl font-bold bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-1">
+               {item.metric}
+            </p>
+         )}
+
+         <h3 className="text-xl sm:text-2xl font-bold text-theme-primary mb-3">
+            {item.title}
+         </h3>
+
+         <div className="flex items-center gap-2 mb-4">
+            <span className="px-3 py-1 rounded-full text-xs border border-theme text-theme-secondary">
+               {item.organization}
+            </span>
+            <span className="px-3 py-1 rounded-full text-xs border border-theme text-theme-secondary">
+               {item.year}
+            </span>
+         </div>
+
+         <p className="text-sm text-theme-secondary leading-relaxed mb-6 flex-1">
+            {item.description}
+         </p>
+
+         <button
+            onClick={() => setFlipped(true)}
+            className="self-start flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
+         >
+            {ctaLabel} ↗
+         </button>
+      </>
+   );
+
+   const backContent = (
+      <>
+         <button
+            onClick={() => setFlipped(false)}
+            className="self-start flex items-center gap-2 text-sm text-theme-muted hover:text-theme-primary transition-colors mb-4"
+         >
+            {certUiIconMap.arrowleft} Back to Details
+         </button>
+
+         {isCert ? (
+            <>
+               <div
+                  onClick={() => backImage && setLightboxOpen(true)}
+                  className={`flex-1 rounded-xl border border-theme bg-white/5 flex items-center justify-center overflow-hidden mb-4 ${backImage ? "cursor-zoom-in" : ""}`}
+               >
+                  {backImage ? (
+                     <img
+                        src={backImage}
+                        alt={`${item.title} certificate`}
+                        className="w-full h-full object-contain"
+                     />
+                  ) : (
+                     <span className="text-theme-muted text-sm px-4 text-center">
+                        Certificate image coming soon
+                     </span>
+                  )}
+               </div>
+               {backImage && (
+                  <button
+                     onClick={() => setLightboxOpen(true)}
+                     className="self-start flex items-center gap-2 text-sm text-theme-secondary hover:text-theme-primary transition-colors"
+                  >
+                     {certUiIconMap.maximize} View Full Size ↗
+                  </button>
+               )}
+            </>
+         ) : (
+            <>
+               {item.metric && (
+                  <div className="text-center mb-4">
+                     <p className="text-4xl font-bold bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        {item.metric}
+                     </p>
+                     <p className="text-xs tracking-widest text-theme-muted mt-1">
+                        {item.organization.toUpperCase()}
+                     </p>
+                  </div>
+               )}
+               <p className="text-sm text-theme-secondary leading-relaxed mb-4">
+                  {item.description}
+               </p>
+               {item.skills?.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                     {item.skills.map((s) => (
+                        <span
+                           key={s}
+                           className="px-3 py-1 rounded-full text-xs border border-theme text-theme-secondary"
+                        >
+                           {s}
+                        </span>
+                     ))}
+                  </div>
+               )}
+               {backImage && (
+                  <div
+                     onClick={() => setLightboxOpen(true)}
+                     className="rounded-xl border border-theme bg-white/5 flex items-center justify-center overflow-hidden mb-4 h-32 cursor-zoom-in"
+                  >
+                     <img
+                        src={backImage}
+                        alt={`${item.title} proof`}
+                        className="w-full h-full object-contain"
+                     />
+                  </div>
+               )}
+
+               {item.proofUrl && (
+                  <a
+                     href={item.proofUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="self-start flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-theme text-theme-secondary hover:bg-white/10 transition-colors mt-auto"
+                  >
+                     {certUiIconMap.externallink} View {item.organization} ↗
+                  </a>
+               )}
+            </>
+         )}
+      </>
+   );
+
    return (
       <>
-         <div className="[perspective:1600px]">
+         {/* min-h works at ALL widths as a safe floor; lg:h-full only kicks in on desktop once the parent grid has a real height */}
+         <div className="min-h-[440px] lg:h-full [perspective:1600px]">
             <AnimatePresence mode="wait">
                <motion.div
                   key={item.id}
@@ -45,166 +187,60 @@ function ShowcaseCard({ item, index, total }) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.35 }}
+                  className="h-full"
                >
-                  <motion.div
-                     animate={{ rotateY: flipped ? 180 : 0 }}
-                     transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                     style={{ transformStyle: "preserve-3d" }}
-                     className="relative w-full min-h-440px"
-                  >
-                     {/* FRONT */}
-                     <div
-                        style={{ backfaceVisibility: "hidden" }}
-                        className="absolute inset-0 project-card rounded-2xl bg-glass-scrolled backdrop-blur-xl p-6 sm:p-7 flex flex-col"
-                     >
-                        <div className="flex items-center justify-between mb-5">
-                           <TypeChip
-                              type={item.type}
-                              featured={item.featured}
-                           />
-                           <span className="text-xs text-theme-muted">
-                              {String(index + 1).padStart(2, "0")} /{" "}
-                              {String(total).padStart(2, "0")}
-                           </span>
-                        </div>
-
-                        <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme flex items-center justify-center text-3xl mb-5">
-                           {certIconMap[item.icon]}
-                        </div>
-
-                        {!isCert && item.metric && (
-                           <p className="text-3xl font-bold bg-linear-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-1">
-                              {item.metric}
-                           </p>
-                        )}
-
-                        <h3 className="text-xl sm:text-2xl font-bold text-theme-primary mb-3">
-                           {item.title}
-                        </h3>
-
-                        <div className="flex items-center gap-2 mb-4">
-                           <span className="px-3 py-1 rounded-full text-xs border border-theme text-theme-secondary">
-                              {item.organization}
-                           </span>
-                           <span className="px-3 py-1 rounded-full text-xs border border-theme text-theme-secondary">
-                              {item.year}
-                           </span>
-                        </div>
-
-                        <p className="text-sm text-theme-secondary leading-relaxed mb-6 flex-1">
-                           {item.description}
-                        </p>
-
-                        <button
-                           onClick={() => setFlipped(true)}
-                           className="self-start flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
-                        >
-                           {ctaLabel} ↗
-                        </button>
+                  {shouldReduceMotion ? (
+                     <div className="project-card relative h-full rounded-2xl overflow-hidden">
+                        <AnimatePresence mode="wait">
+                           <motion.div
+                              key={flipped ? "back" : "front"}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.25 }}
+                              className="h-full rounded-2xl bg-glass-scrolled backdrop-blur-xl p-6 sm:p-7 flex flex-col"
+                           >
+                              {flipped ? backContent : frontContent}
+                           </motion.div>
+                        </AnimatePresence>
                      </div>
-
-                     {/* BACK */}
-                     <div
-                        style={{
-                           backfaceVisibility: "hidden",
-                           transform: "rotateY(180deg)",
+                  ) : (
+                     <motion.div
+                        animate={{ rotateY: flipped ? 180 : 0 }}
+                        transition={{
+                           duration: 0.65,
+                           ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="absolute inset-0 project-card rounded-2xl bg-glass-scrolled backdrop-blur-xl p-6 sm:p-7 flex flex-col"
+                        style={{
+                           transformStyle: "preserve-3d",
+                           WebkitTransformStyle: "preserve-3d",
+                        }}
+                        className="project-card relative h-full rounded-2xl"
                      >
-                        <button
-                           onClick={() => setFlipped(false)}
-                           className="self-start flex items-center gap-2 text-sm text-theme-muted hover:text-theme-primary transition-colors mb-4"
+                        {/* front face — plain Tailwind absolute+inset-0, no inline position needed */}
+                        <div
+                           style={{
+                              backfaceVisibility: "hidden",
+                              WebkitBackfaceVisibility: "hidden",
+                           }}
+                           className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col"
                         >
-                           {certUiIconMap.arrowleft} Back to Details
-                        </button>
+                           {frontContent}
+                        </div>
 
-                        {isCert ? (
-                           <>
-                              <div
-                                 onClick={() =>
-                                    backImage && setLightboxOpen(true)
-                                 }
-                                 className={`flex-1 rounded-xl border border-theme bg-white/5 flex items-center justify-center overflow-hidden mb-4 ${backImage ? "cursor-zoom-in" : ""}`}
-                              >
-                                 {backImage ? (
-                                    <img
-                                       src={backImage}
-                                       alt={`${item.title} certificate`}
-                                       className="w-full h-full object-contain"
-                                    />
-                                 ) : (
-                                    <span className="text-theme-muted text-sm px-4 text-center">
-                                       Certificate image coming soon
-                                    </span>
-                                 )}
-                              </div>
-                              {backImage && (
-                                 <button
-                                    onClick={() => setLightboxOpen(true)}
-                                    className="self-start flex items-center gap-2 text-sm text-theme-secondary hover:text-theme-primary transition-colors"
-                                 >
-                                    {certUiIconMap.maximize} View Full Size ↗
-                                 </button>
-                              )}
-                           </>
-                        ) : (
-                           <>
-                              {item.metric && (
-                                 <div className="text-center mb-4">
-                                    <p className="text-4xl font-bold bg-linear-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                                       {item.metric}
-                                    </p>
-                                    <p className="text-xs tracking-widest text-theme-muted mt-1">
-                                       {item.organization.toUpperCase()}
-                                    </p>
-                                 </div>
-                              )}
-
-                              <p className="text-sm text-theme-secondary leading-relaxed mb-4">
-                                 {item.description}
-                              </p>
-
-                              {item.skills?.length > 0 && (
-                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    {item.skills.map((s) => (
-                                       <span
-                                          key={s}
-                                          className="px-3 py-1 rounded-full text-xs border border-theme text-theme-secondary"
-                                       >
-                                          {s}
-                                       </span>
-                                    ))}
-                                 </div>
-                              )}
-
-                              {backImage && (
-                                 <div
-                                    onClick={() => setLightboxOpen(true)}
-                                    className="rounded-xl border border-theme bg-white/5 flex items-center justify-center overflow-hidden mb-4 h-32 cursor-zoom-in"
-                                 >
-                                    <img
-                                       src={backImage}
-                                       alt={`${item.title} proof`}
-                                       className="w-full h-full object-contain"
-                                    />
-                                 </div>
-                              )}
-
-                              {item.proofUrl && (
-                                 <a
-                                    href={item.proofUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="self-start flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border border-theme text-theme-secondary hover:bg-white/10 transition-colors mt-auto"
-                                 >
-                                    {certUiIconMap.externallink} View{" "}
-                                    {item.organization} ↗
-                                 </a>
-                              )}
-                           </>
-                        )}
-                     </div>
-                  </motion.div>
+                        {/* back face — same absolute+inset-0, rotated 180deg */}
+                        <div
+                           style={{
+                              backfaceVisibility: "hidden",
+                              WebkitBackfaceVisibility: "hidden",
+                              transform: "rotateY(180deg)",
+                           }}
+                           className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col"
+                        >
+                           {backContent}
+                        </div>
+                     </motion.div>
+                  )}
                </motion.div>
             </AnimatePresence>
          </div>
@@ -303,6 +339,11 @@ function Certificates() {
       });
    };
 
+   const maskImage = `linear-gradient(to bottom,
+    ${fadeTop ? "transparent 0, black 28px" : "black 0"},
+    black calc(100% - ${fadeBottom ? "28px" : "0px"}),
+    ${fadeBottom ? "transparent 100%" : "black 100%"})`;
+
    return (
       <section id="certificates" className="min-h-screen px-6 lg:px-16 py-24">
          <div className="max-w-6xl mx-auto">
@@ -332,9 +373,10 @@ function Certificates() {
                ))}
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-               {/* LEFT: Showcase */}
-               <div>
+            {/* Shared height only kicks in at lg — mobile/tablet stay natural/stacked */}
+            <div className="grid lg:grid-cols-2 gap-8 lg:h-[560px]">
+               {/* LEFT: Showcase — no bare h-full here, only lg:h-full */}
+               <div className="lg:h-full lg:min-h-0">
                   {selected ? (
                      <ShowcaseCard
                         item={selected}
@@ -349,7 +391,7 @@ function Certificates() {
                </div>
 
                {/* RIGHT: Library */}
-               <div>
+               <div className="lg:h-full lg:min-h-0 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                      <p className="text-xs font-semibold tracking-widest text-theme-muted">
                         CERTIFICATIONS & ACHIEVEMENTS
@@ -360,41 +402,32 @@ function Certificates() {
                      </span>
                   </div>
 
-                  <div className="relative">
-                     <div
-                        className={`library-fade-top ${fadeTop ? "visible" : ""}`}
-                     />
-
-                     <AnimatePresence mode="popLayout">
-                        <motion.div
-                           key={filter}
-                           ref={scrollContainerRef}
-                           onScroll={updateFades}
-                           initial={{ opacity: 0 }}
-                           animate={{ opacity: 1 }}
-                           exit={{ opacity: 0 }}
-                           transition={{ duration: 0.3 }}
-                           className="library-scroll flex flex-col gap-3 h-[300px] sm:h-[420px] lg:h-[480px] overflow-y-auto overflow-x-hidden pr-2"
-                        >
-                           {filtered.map((item) => (
-                              <div
-                                 key={item.id}
-                                 ref={(el) => (itemRefs.current[item.id] = el)}
-                              >
-                                 <LibraryItem
-                                    item={item}
-                                    isActive={item.id === selectedId}
-                                    onClick={() => handleSelect(item.id)}
-                                 />
-                              </div>
-                           ))}
-                        </motion.div>
-                     </AnimatePresence>
-
-                     <div
-                        className={`library-fade-bottom ${fadeBottom ? "visible" : ""}`}
-                     />
-                  </div>
+                  <AnimatePresence mode="popLayout">
+                     <motion.div
+                        key={filter}
+                        ref={scrollContainerRef}
+                        onScroll={updateFades}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        style={{ WebkitMaskImage: maskImage, maskImage }}
+                        className="library-scroll flex flex-col gap-3 h-[300px] sm:h-[420px] lg:h-auto lg:flex-1 lg:min-h-0 overflow-y-auto overflow-x-hidden pr-2"
+                     >
+                        {filtered.map((item) => (
+                           <div
+                              key={item.id}
+                              ref={(el) => (itemRefs.current[item.id] = el)}
+                           >
+                              <LibraryItem
+                                 item={item}
+                                 isActive={item.id === selectedId}
+                                 onClick={() => handleSelect(item.id)}
+                              />
+                           </div>
+                        ))}
+                     </motion.div>
+                  </AnimatePresence>
                </div>
             </div>
          </div>

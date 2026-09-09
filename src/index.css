@@ -181,7 +181,7 @@ html.light .fluid-field::after {
   background: linear-gradient(180deg, rgba(45, 212, 191, 0.7), rgba(139, 92, 246, 0.7), rgba(236, 72, 153, 0.7));
 }
 
-.library-fade-top,
+/* .library-fade-top,
 .library-fade-bottom {
   position: absolute;
   left: 0;
@@ -191,14 +191,14 @@ html.light .fluid-field::after {
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 5;
-}
+} */
 
-.library-fade-top {
+/* .library-fade-top {
   top: 0;
   background: linear-gradient(to bottom, var(--color-bg), transparent);
-}
+} */
 
-.library-fade-bottom {
+/* .library-fade-bottom {
   bottom: 0;
   background: linear-gradient(to top, var(--color-bg), transparent);
 }
@@ -206,4 +206,4 @@ html.light .fluid-field::after {
 .library-fade-top.visible,
 .library-fade-bottom.visible {
   opacity: 0.9;
-}
+} */
