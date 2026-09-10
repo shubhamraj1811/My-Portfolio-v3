@@ -49,12 +49,12 @@ function ShowcaseCard({ item, index, total }) {
             </span>
          </div>
 
-         <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme flex items-center justify-center text-3xl mb-5">
+         <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme flex items-center justify-center text-3xl mb-5">
             {certIconMap[item.icon]}
          </div>
 
          {!isCert && item.metric && (
-            <p className="text-3xl font-bold bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-1">
+            <p className="text-3xl font-bold bg-linear-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-1">
                {item.metric}
             </p>
          )}
@@ -78,7 +78,7 @@ function ShowcaseCard({ item, index, total }) {
 
          <button
             onClick={() => setFlipped(true)}
-            className="self-start flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
+            className="self-start flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white hover:opacity-90 transition-opacity"
          >
             {ctaLabel} ↗
          </button>
@@ -125,7 +125,7 @@ function ShowcaseCard({ item, index, total }) {
             <>
                {item.metric && (
                   <div className="text-center mb-4">
-                     <p className="text-4xl font-bold bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                     <p className="text-4xl font-bold bg-linear-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                         {item.metric}
                      </p>
                      <p className="text-xs tracking-widest text-theme-muted mt-1">
@@ -179,7 +179,7 @@ function ShowcaseCard({ item, index, total }) {
    return (
       <>
          {/* min-h works at ALL widths as a safe floor; lg:h-full only kicks in on desktop once the parent grid has a real height */}
-         <div className="min-h-[440px] lg:h-full [perspective:1600px]">
+         <div className="min-h-440px lg:h-full perspective:1600px">
             <AnimatePresence mode="wait">
                <motion.div
                   key={item.id}
@@ -205,41 +205,44 @@ function ShowcaseCard({ item, index, total }) {
                         </AnimatePresence>
                      </div>
                   ) : (
-                     <motion.div
-                        animate={{ rotateY: flipped ? 180 : 0 }}
-                        transition={{
-                           duration: 0.65,
-                           ease: [0.22, 1, 0.36, 1],
-                        }}
-                        style={{
-                           transformStyle: "preserve-3d",
-                           WebkitTransformStyle: "preserve-3d",
-                        }}
+                     <div
                         className="project-card relative h-full rounded-2xl"
+                        style={{ transformStyle: "preserve-3d" }}
                      >
-                        {/* front face — plain Tailwind absolute+inset-0, no inline position needed */}
-                        <div
+                        {/* front face — animates its OWN rotation 0deg -> 180deg (away/hidden). Never composed with a parent rotation, so the end state is always exact. */}
+                        <motion.div
+                           animate={{ rotateY: flipped ? 180 : 0 }}
+                           transition={{
+                              duration: 0.65,
+                              ease: [0.22, 1, 0.36, 1],
+                           }}
                            style={{
                               backfaceVisibility: "hidden",
                               WebkitBackfaceVisibility: "hidden",
                            }}
-                           className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col"
+                           className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col overflow-y-auto library-scroll"
                         >
                            {frontContent}
-                        </div>
+                        </motion.div>
 
-                        {/* back face — same absolute+inset-0, rotated 180deg */}
-                        <div
+                        {/* back face — animates its OWN rotation -180deg (hidden) -> 0deg (fully normal, readable).
+                            0deg is a literal, unrotated, unmirrored orientation. */}
+
+                        <motion.div
+                           animate={{ rotateY: flipped ? 0 : -180 }}
+                           transition={{
+                              duration: 0.65,
+                              ease: [0.22, 1, 0.36, 1],
+                           }}
                            style={{
                               backfaceVisibility: "hidden",
                               WebkitBackfaceVisibility: "hidden",
-                              transform: "rotateY(180deg)",
                            }}
-                           className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col"
+                           className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col overflow-y-auto library-scroll"
                         >
                            {backContent}
-                        </div>
-                     </motion.div>
+                        </motion.div>
+                     </div>
                   )}
                </motion.div>
             </AnimatePresence>
@@ -394,7 +397,7 @@ function Certificates() {
                      className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300
               ${
                  filter === f
-                    ? "bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 text-white border-transparent"
+                    ? "bg-linear-to-r from-teal-400 via-purple-500 to-pink-500 text-white border-transparent"
                     : "border-theme text-theme-secondary hover:text-theme-primary hover:bg-white/10"
               }`}
                   >
