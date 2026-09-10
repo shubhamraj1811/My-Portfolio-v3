@@ -299,6 +299,8 @@ function Certificates() {
    const scrollContainerRef = useRef(null);
    const itemRefs = useRef({});
 
+   const [libraryHeight, setLibraryHeight] = useState(560);
+
    const filtered = ITEMS.filter((i) => {
       if (filter === "All") return true;
       if (filter === "Certificates") return i.type === "certificate";
@@ -318,6 +320,34 @@ function Certificates() {
    useEffect(() => {
       updateFades();
    }, [filtered, updateFades]);
+
+   // Measure a real library item and size the shared viewport to show
+   // exactly 3 full items + ~25% of the 4th (per the requested layout).
+   useEffect(() => {
+      const firstEl = itemRefs.current[filtered[0]?.id];
+      if (!firstEl) return;
+
+      const GAP = 12; // px — matches the `gap-3` used on the library list
+      const PARTIAL_RATIO = 0.25; // ~25% of the 4th card peeking below the fold
+
+      const measure = () => {
+         const itemH = firstEl.offsetHeight;
+         setLibraryHeight(
+            Math.round(itemH * 3 + itemH * PARTIAL_RATIO + GAP * 3),
+         );
+      };
+
+      measure();
+
+      const ro = new ResizeObserver(measure);
+      ro.observe(firstEl);
+      window.addEventListener("resize", measure);
+
+      return () => {
+         ro.disconnect();
+         window.removeEventListener("resize", measure);
+      };
+   }, [filtered]);
 
    const handleFilter = (f) => {
       setFilter(f);
@@ -374,9 +404,12 @@ function Certificates() {
             </div>
 
             {/* Shared height only kicks in at lg — mobile/tablet stay natural/stacked */}
-            <div className="grid lg:grid-cols-2 gap-8 lg:h-[560px]">
+            <div
+               className="grid lg:grid-cols-2 gap-8"
+               style={{ "--lib-h": `${libraryHeight}px` }}
+            >
                {/* LEFT: Showcase — no bare h-full here, only lg:h-full */}
-               <div className="lg:h-full lg:min-h-0">
+               <div className="lg:h-[var(--lib-h)] lg:min-h-0">
                   {selected ? (
                      <ShowcaseCard
                         item={selected}
@@ -391,7 +424,7 @@ function Certificates() {
                </div>
 
                {/* RIGHT: Library */}
-               <div className="lg:h-full lg:min-h-0 flex flex-col">
+               <div className="lg:h-[var(--lib-h)] lg:min-h-0 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                      <p className="text-xs font-semibold tracking-widest text-theme-muted">
                         CERTIFICATIONS & ACHIEVEMENTS
