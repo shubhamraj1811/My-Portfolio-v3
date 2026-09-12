@@ -203,3 +203,16 @@ export const certUiIconMap = {
    arrowleft: <ArrowLeft size={16} />,
    maximize: <Maximize2 size={16} />,
 };
+
+import { SiLeetcode } from 'react-icons/si'
+import { Trophy as TrophyIcon, TrendingUp, GitBranch, Activity, ChevronDown } from 'lucide-react'
+
+export const codingProfileIconMap = {
+   leetcode: <SiLeetcode className="text-yellow-400" />,
+   github: <SiGithub className="text-theme-primary" />,
+   trophy: <TrophyIcon size={18} className="text-purple-400" />,
+   trending: <TrendingUp size={18} className="text-teal-400" />,
+   branch: <GitBranch size={16} />,
+   activity: <Activity size={16} />,
+   chevrondown: <ChevronDown size={14} />,
+}
