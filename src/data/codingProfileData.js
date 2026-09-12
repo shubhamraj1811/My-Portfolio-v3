@@ -1,50 +1,91 @@
-// ── LeetCode stats (mock — replace with real data once API/backend is connected) ──
-export const leetcodeData = {
-   totalSolved: 150,
-   totalLabel: "150+",
-   easy: { solved: 78, total: 150 },
-   medium: { solved: 62, total: 150 },
-   hard: { solved: 10, total: 150 },
+export const GITHUB_USERNAME = "shubhamraj1811";
+export const LEETCODE_USERNAME = "shubhcoded";
+export const LEETCODE_PROFILE_URL = `https://leetcode.com/u/${LEETCODE_USERNAME}/`;
+export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USERNAME}`;
+
+// Manually maintained REAL stats — used ONLY as a fallback if the live third-party
+// LeetCode API is unreachable. Update these yourself to match your actual profile
+// whenever you solve more problems. Leave as null until you fill them in.
+export const MANUAL_LEETCODE_STATS = {
+   totalSolved: 107, // e.g. 150
+   totalQuestions: 4047,
+   easy: 60,
+   medium: 34,
+   hard: 13,
+};
+
+// These two are genuine personal achievements, not live API stats — kept as static content.
+export const KNOWN_ACHIEVEMENTS = {
    daysChallenge: "100 Days",
    dsaLevel: "Beginner → Medium",
-   profileUrl: "https://leetcode.com/u/shubhcoded/",
 };
 
-// ── GitHub stats (mock — replace with real data via secure backend, never expose tokens client-side) ──
-export const githubData = {
-   repositories: 12,
-   contributionsThisYear: 340,
-   profileUrl: "https://github.com/shubhamraj1811",
-};
+const LEETCODE_STATS_API = `https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`;
+const GITHUB_API = `https://api.github.com/users/${GITHUB_USERNAME}`;
+const githubContribApi = (year) =>
+   `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}${year ? `?y=${year}` : ""}`;
 
-// ── Contribution calendar (mock generator — swap for real GitHub contribution API response) ──
-export const AVAILABLE_YEARS = [2026, 2025, 2024];
-
-function seededRandom(seed) {
-   const x = Math.sin(seed) * 10000;
-   return x - Math.floor(x);
+// Returns real LeetCode stats, or the manually maintained real fallback, or null.
+export async function fetchLeetCodeStats() {
+   try {
+      const res = await fetch(LEETCODE_STATS_API);
+      if (!res.ok) throw new Error("LeetCode API request failed");
+      const data = await res.json();
+      if (data.status !== "success")
+         throw new Error("LeetCode API returned an error");
+      return {
+         totalSolved: data.totalSolved,
+         totalQuestions: data.totalQuestions,
+         easy: data.easySolved,
+         medium: data.mediumSolved,
+         hard: data.hardSolved,
+         source: "live",
+      };
+   } catch {
+      if (MANUAL_LEETCODE_STATS.totalSolved != null) {
+         return { ...MANUAL_LEETCODE_STATS, source: "manual" };
+      }
+      return null;
+   }
 }
 
-// Generates a mock year of daily contribution counts, deterministic per year (not random each render)
-export function getContributionData(year) {
-   const start = new Date(`${year}-01-01`);
-   const end = new Date(`${year}-12-31`);
-   const days = [];
-   let seed = year * 13;
-
-   for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-      seed += 1;
-      const rand = seededRandom(seed);
-      // Weighted toward lower activity, occasional bursts — roughly resembles real contribution patterns
-      let count = 0;
-      if (rand > 0.55) count = Math.floor(seededRandom(seed * 2) * 3) + 1;
-      if (rand > 0.85) count = Math.floor(seededRandom(seed * 3) * 6) + 4;
-      if (rand > 0.96) count = Math.floor(seededRandom(seed * 4) * 10) + 8;
-
-      days.push({ date: new Date(d).toISOString().split("T")[0], count });
+// Returns { repositories } from your real public GitHub profile, or null.
+export async function fetchGithubProfile() {
+   try {
+      const res = await fetch(GITHUB_API);
+      if (!res.ok) throw new Error("GitHub profile request failed");
+      const data = await res.json();
+      return { repositories: data.public_repos };
+   } catch {
+      return null;
    }
+}
 
-   return days;
+// Returns real contribution days for a given year (or the most recent period if
+// no year is passed), plus the list of years GitHub actually has data for.
+// Current-year data always stops at today — there is no generation past real dates.
+export async function fetchGithubContributions(year) {
+   try {
+      const res = await fetch(githubContribApi(year));
+      if (!res.ok) throw new Error("GitHub contributions request failed");
+      const data = await res.json();
+
+      const todayStr = new Date().toISOString().split("T")[0];
+      const days = (data.contributions || []).filter((d) => d.date <= todayStr);
+
+      const availableYears = Object.keys(data.total || {})
+         .filter((k) => /^\d{4}$/.test(k))
+         .map(Number)
+         .sort((a, b) => b - a);
+
+      const total = year
+         ? (data.total?.[year] ?? days.reduce((sum, d) => sum + d.count, 0))
+         : days.reduce((sum, d) => sum + d.count, 0);
+
+      return { days, total, availableYears };
+   } catch {
+      return null;
+   }
 }
 
 export function getContributionLevel(count) {
