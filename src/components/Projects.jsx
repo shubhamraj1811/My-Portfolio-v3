@@ -6,9 +6,13 @@ function Projects() {
       <section id="projects" className="min-h-screen px-6 lg:px-16 py-24">
          {/* ===== TITLE ===== */}
          <div className="text-center mb-16">
-            <p className="text-teal-400 font-medium tracking-widest text-sm mb-3">
-               PROJECTS
-            </p>
+            <div className="mb-3">
+               <span className="inline-block px-4 py-1.5 rounded-full border border-theme bg-glass">
+                  <span className="text-sm font-semibold tracking-widest bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                     PROJECTS
+                  </span>
+               </span>
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-theme-primary mb-3">
                My Selected Projects
             </h2>

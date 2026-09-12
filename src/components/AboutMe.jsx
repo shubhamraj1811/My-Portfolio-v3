@@ -40,10 +40,14 @@ function AboutMe() {
             {/* Header */}
             <div className="text-center mb-16">
                {/* increase the size of ABOUT ME */}
-               <p className="text-teal-400 font-medium tracking-widest text-3xl mb-3">
-                  ABOUT ME
-               </p>
-               <h2 className="text-xl sm:text-2xl font-bold text-theme-primary mb-4">
+               <div className="mb-3">
+                  <span className="inline-block px-4 py-1.5 rounded-full border border-theme bg-glass">
+                     <span className="text-sm font-semibold tracking-widest bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        ABOUT
+                     </span>
+                  </span>
+               </div>
+               <h2 className="text-3xl sm:text-4xl font-bold text-theme-primary mb-4">
                   Get To Know Me
                </h2>
             </div>

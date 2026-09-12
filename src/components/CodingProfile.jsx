@@ -316,9 +316,13 @@ function CodingProfile() {
       <section id="coding-profile" className="min-h-screen px-6 lg:px-16 py-24">
          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-               <p className="text-teal-400 font-medium tracking-widest text-sm mb-3">
-                  CODING PROFILE
-               </p>
+               <div className="mb-3">
+                  <span className="inline-block px-4 py-1.5 rounded-full border border-theme bg-glass">
+                     <span className="text-sm font-semibold tracking-widest bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        CODING PROFILE
+                     </span>
+                  </span>
+               </div>
                <h2 className="text-3xl sm:text-4xl font-bold text-theme-primary">
                   Proof of Work
                </h2>
