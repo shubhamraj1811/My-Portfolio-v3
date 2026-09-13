@@ -39,7 +39,9 @@ function Footer() {
                         <button
                            key={link.id}
                            onClick={() => scrollToSection(link.id)}
-                           className="text-left text-sm text-theme-secondary hover:text-theme-primary transition-colors w-fit"
+                           className="text-left text-sm text-theme-secondary transition-all duration-300 w-fit inline-block
+                           hover:scale-110 hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-400 hover:to-pink-400
+                           hover:bg-clip-text hover:text-transparent"
                         >
                            {link.label}
                         </button>
@@ -61,7 +63,9 @@ function Footer() {
                            href={s.url}
                            target="_blank"
                            rel="noopener noreferrer"
-                           className="flex items-center gap-2 text-sm text-theme-secondary hover:text-theme-primary transition-colors w-fit"
+                           className="flex items-center gap-2 text-sm text-theme-secondary transition-all duration-300 w-fit
+                           hover:scale-110 hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-400 hover:to-pink-400
+                           hover:bg-clip-text hover:text-transparent"
                         >
                            {contactIconMap[s.icon]} {s.label}
                         </a>
