@@ -33,7 +33,7 @@ function Hero() {
                     <p className="text-teal-400 font-medium mb-2">Hi, Myself</p>
 
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 text-theme-primary">
-                        Shubham
+                        Shubham Raj
                     </h1>
 
                     {/* ===== ROLE TEXT ===== */}

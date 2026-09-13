@@ -1,38 +1,48 @@
 export const TIMELINE = [
    // === EDUCATION ===
+
    {
-    // === CLASS 10 ===
+      // === CLASS 10 ===
       id: "class10",
       category: "Academic",
       title: "Class 10th",
-      meta: ["CBSE", "KV School"],
+      meta: ["CBSE", "N.P.C. School"],
       duration: "2020",
       description:
-         "Completed secondary education with a strong foundation across core subjects.",
+         "Built a strong academic foundation, graduating with 90% under the CBSE curriculum.",
       details: [{ label: "Percentage", value: "90%" }],
    },
+
    // === CLASS 12 ===
    {
       id: "class12",
       category: "Academic",
       title: "Class 12th",
-      meta: ["BSEB", "COC"],
+      meta: ["BSEB", "College of Commerce, Arts & Science"],
       duration: "2020 — 2022",
       description:
-         "Completed higher secondary education, building the fundamentals that led into engineering.",
-      details: [{ label: "Percentage", value: "78%" }],
+         "Completed higher secondary education with 82%, strengthening the academic foundation for engineering.",
+      details: [{ label: "Percentage", value: "82%" }],
    },
+
    // === B.TECH ===
    {
       id: "btech",
       category: "Academic",
-      title: "B.Tech — Computer Science (AI)",
-      meta: ["GEC Lakhisarai"],
+      title: "B.Tech — Computer Science & Engineering (AI)",
+      meta: ["Government Engineering College, Lakhisarai"],
       duration: "2023 — 2027",
       description:
-         "Pursuing a specialization in Computer Science with a focus on Artificial Intelligence, alongside hands-on Android development.",
+         "Pursuing Computer Science with a specialization in Artificial Intelligence, maintaining a 7.99 CGPA while building strong foundations in software engineering and problem solving.",
       details: [{ label: "CGPA", value: "7.99" }],
-      coursework: ["DSA", "DBMS", "OOP", "OS", "CN"],
+      coursework: [
+         "Data Structures & Algorithms",
+         "Database Management Systems",
+         "Object-Oriented Programming",
+         "Operating Systems",
+         "Computer Networks",
+         "Machine Learning",
+      ],
       semesterBreakdown: [
          { sem: "Sem 1", cgpa: 7.54 },
          { sem: "Sem 2", cgpa: 7.29 },
@@ -41,83 +51,131 @@ export const TIMELINE = [
          { sem: "Sem 5", cgpa: 8.41 },
       ],
    },
+
    // === HACKATHON ===
+   // === GOOGLE DEVELOPER SOLUTIONS HACKATHON ===
+
    {
       id: "hackathon",
       category: "Journey",
       title: "Google Developer Solutions Hackathon",
-      meta: [],
+      meta: ["Hack2Skill", "Google Developers Groups"],
       duration: "Hackathon",
       description:
-         "Collaborated in a team to design and build a solution under time pressure, focused on real-world problem solving.",
+         "Built an AI-powered study companion as a team, applying problem-solving and development skills to a real-world challenge.",
       details: [
-         { label: "Team", value: "Shubham Raj, Prince Raj, Aman Kumar" },
-         { label: "Project", value: "Details coming soon" },
+         {
+            label: "Role",
+            value: "Team Lead & Developer",
+         },
+         {
+            label: "Project",
+            value: "AI-Powered Study Companion",
+         },
       ],
    },
-   // === WEB DEVELOPMENT ===
+
+   // === NIELIT INTERNSHIP ===
+
    {
-      id: "webdev",
-      category: "Learning",
-      title: "Exploring Web Development & React",
-      meta: [],
-      duration: "Ongoing",
+      id: "nielit-internship",
+      category: "Journey",
+      title: "AI/ML Internship — NIELIT Patna",
+      meta: ["NIELIT Patna", "Machine Learning"],
+      duration: "June 2025",
       description:
-         "Expanding into web development, learning React fundamentals and building this very portfolio as part of the process.",
-      details: [],
-      techStack: ["React", "JavaScript", "Tailwind CSS"],
+         "Completed a one-month Machine Learning internship, strengthening Python skills and applying ML techniques through guided hands-on projects.",
+      details: [
+         { label: "Duration", value: "1 Month" },
+         { label: "Domain", value: "Machine Learning with Python" },
+         { label: "Focus", value: "Python, ML Algorithms & Techniques" },
+         {
+            label: "Experience",
+            value: "Built mini projects under mentor guidance",
+         },
+      ],
+      techStack: ["Python", "NumPy", "Pandas", "Machine Learning"],
    },
-   // === ANDROID DEVELOPMENT ===
+
+   // === ANDROID DEVELOPMENT — CURRENT FOCUS ===
    {
       id: "android",
-      category: "Current Focus",
+      category: "Journey",
       title: "Android Development",
-      meta: [],
+      meta: ["Kotlin", "Jetpack Compose"],
       duration: "Present",
       description:
-         "Currently focused on building native Android applications with a modern, declarative UI approach.",
-      details: [],
-      techStack: ["Kotlin", "Jetpack Compose"],
+         "Building modern Android applications with Kotlin and Jetpack Compose, while developing practical skills in MVVM, Coroutines, Flow, Room, and Hilt.",
+      details: [
+         { label: "Focus", value: "Native Android Development" },
+         { label: "Architecture", value: "MVVM" },
+         {
+            label: "Core Stack",
+            value: "Kotlin, Jetpack Compose, Coroutines, Flow",
+         },
+      ],
+      techStack: [
+         "Kotlin",
+         "Jetpack Compose",
+         "MVVM",
+         "Coroutines",
+         "Flow",
+         "Room",
+         "Hilt",
+      ],
       current: true,
    },
 ];
 
+
 export const ACADEMIC_PROFILE = {
-   // === B.TECH ===
-   degree: "B.Tech — Computer Science (AI)",
-   institution: "GEC Lakhisarai",
+   // === B.TECH — ACADEMIC SNAPSHOT ===
+
+   degree: "B.Tech — Computer Science & Engineering (AI)",
+   institution: "Government Engineering College, Lakhisarai",
    duration: "2023 — 2027",
    cgpa: 7.99,
+
    coursework: [
       {
          id: "dsa",
          name: "DSA",
-         proficiency: 80,
-         topics: ["Arrays", "Trees", "Graphs", "Dynamic Programming"],
+         proficiency: 75,
+         topics: ["Arrays", "Strings", "Linked Lists", "Trees"],
       },
       {
          id: "dbms",
          name: "DBMS",
          proficiency: 75,
-         topics: ["ER Model", "Normalization", "SQL", "Transactions"],
+         topics: ["SQL", "ER Model", "Normalization", "Transactions"],
       },
       {
          id: "oop",
          name: "OOP",
          proficiency: 85,
-         topics: ["Encapsulation", "Inheritance", "Polymorphism"],
+         topics: [
+            "Encapsulation",
+            "Inheritance",
+            "Polymorphism",
+            "Abstraction",
+         ],
       },
       {
          id: "os",
          name: "OS",
          proficiency: 70,
-         topics: ["Processes", "Scheduling", "Memory Management"],
+         topics: [
+            "Processes",
+            "CPU Scheduling",
+            "Memory Management",
+            "File Systems",
+         ],
       },
       {
          id: "cn",
          name: "CN",
          proficiency: 65,
-         topics: ["OSI Model", "TCP/IP", "Routing"],
+         topics: ["OSI Model", "TCP/IP", "Routing", "Network Protocols"],
       },
    ],
 };

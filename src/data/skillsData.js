@@ -38,6 +38,7 @@ export const SKILLS = [
          },
       ],
    },
+
    {
       id: "jetpack-compose",
       name: "Jetpack Compose",
@@ -69,57 +70,64 @@ export const SKILLS = [
          },
       ],
    },
-   {
-      id: "activities-lifecycle",
-      name: "Activities & Lifecycle",
-      icon: "layers",
-      category: "Android",
-      proficiency: 68,
-      description:
-         "Understanding Android activity lifecycles to build predictable screens and handle common app state changes.",
-      knowledge: [
-         "Activity lifecycle callbacks",
-         "Activity states & transitions",
-         "Configuration changes",
-         "Basic state restoration",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [],
-   },
-   {
-      id: "intents",
-      name: "Intents",
-      icon: "send",
-      category: "Android",
-      proficiency: 68,
-      description:
-         "Using Android intents to navigate between screens, pass data, and interact with platform components.",
-      knowledge: [
-         "Explicit intents",
-         "Implicit intents",
-         "Intent extras & bundles",
-         "Activity results",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [],
-   },
-   {
-      id: "navigation",
-      name: "Navigation",
-      icon: "compass",
-      category: "Android",
-      proficiency: 72,
-      description:
-         "Implementing reliable in-app navigation with structured screen flows, back stack handling, and navigation patterns.",
-      knowledge: [
-         "Navigation graph",
-         "Screen-to-screen navigation",
-         "Back stack management",
-         "Bottom navigation integration",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [],
-   },
+
+//    {
+//       id: "activities-lifecycle",
+//       name: "Activities & Lifecycle",
+//       icon: "layers",
+//       category: "Android",
+//       proficiency: 68,
+//       description:
+//          "Understanding Android activity lifecycles to build predictable screens and handle common app state changes.",
+//       knowledge: [
+//          "Activity lifecycle callbacks",
+//          "Activity states & transitions",
+//          "Configuration changes",
+//          "Basic state restoration",
+//       ],
+//       documentation: { label: "View Documentation", url: "" },
+//       projects: [],
+//    },
+
+
+   // {
+   //    id: "intents",
+   //    name: "Intents",
+   //    icon: "send",
+   //    category: "Android",
+   //    proficiency: 68,
+   //    description:
+   //       "Using Android intents to navigate between screens, pass data, and interact with platform components.",
+   //    knowledge: [
+   //       "Explicit intents",
+   //       "Implicit intents",
+   //       "Intent extras & bundles",
+   //       "Activity results",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [],
+   // },
+
+
+   // {
+   //    id: "navigation",
+   //    name: "Navigation",
+   //    icon: "compass",
+   //    category: "Android",
+   //    proficiency: 72,
+   //    description:
+   //       "Implementing reliable in-app navigation with structured screen flows, back stack handling, and navigation patterns.",
+   //    knowledge: [
+   //       "Navigation graph",
+   //       "Screen-to-screen navigation",
+   //       "Back stack management",
+   //       "Bottom navigation integration",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [],
+   // },
+
+
    {
       id: "coroutines",
       name: "Coroutines",
@@ -137,40 +145,44 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
-   {
-      id: "flow",
-      name: "Flow",
-      icon: "waves",
-      category: "Android",
-      proficiency: 82,
-      description:
-         "Working with reactive data streams to manage asynchronous state and events across Android application layers.",
-      knowledge: [
-         "StateFlow & SharedFlow",
-         "Flow operators",
-         "Collecting in Compose",
-         "Combining & transforming flows",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [],
-   },
-   {
-      id: "material3",
-      name: "Material 3",
-      icon: "material3",
-      category: "Android",
-      proficiency: 78,
-      description:
-         "Designing consistent Android interfaces using Material 3 components, theming, typography, and modern UI patterns.",
-      knowledge: [
-         "Material components",
-         "Theming & color schemes",
-         "Typography",
-         "Dynamic color",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [],
-   },
+
+
+   // {
+   //    id: "flow",
+   //    name: "Flow",
+   //    icon: "waves",
+   //    category: "Android",
+   //    proficiency: 82,
+   //    description:
+   //       "Working with reactive data streams to manage asynchronous state and events across Android application layers.",
+   //    knowledge: [
+   //       "StateFlow & SharedFlow",
+   //       "Flow operators",
+   //       "Collecting in Compose",
+   //       "Combining & transforming flows",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [],
+   // },
+
+
+   // {
+   //    id: "material3",
+   //    name: "Material 3",
+   //    icon: "material3",
+   //    category: "Android",
+   //    proficiency: 78,
+   //    description:
+   //       "Designing consistent Android interfaces using Material 3 components, theming, typography, and modern UI patterns.",
+   //    knowledge: [
+   //       "Material components",
+   //       "Theming & color schemes",
+   //       "Typography",
+   //       "Dynamic color",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [],
+   // },
 
    // ================= ARCHITECTURE =================
    {
@@ -197,6 +209,7 @@ export const SKILLS = [
          },
       ],
    },
+
    {
       id: "viewmodel",
       name: "ViewModel",
@@ -227,100 +240,110 @@ export const SKILLS = [
          },
       ],
    },
-   {
-      id: "state-management",
-      name: "State Management",
-      icon: "shuffle",
-      category: "Architecture",
-      proficiency: 78,
-      description:
-         "Managing predictable UI state and state-driven interactions across Android application layers.",
-      knowledge: [
-         "Single source of truth",
-         "Unidirectional data flow",
-         "StateFlow & Compose State",
-         "Side-effect handling",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [
-         {
-            id: "nodebook",
-            name: "NodeBook",
-            icon: "notebook",
-            link: "#nodebook",
-         },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
-         },
-      ],
-   },
-   {
-      id: "state-hoisting",
-      name: "State Hoisting",
-      icon: "arrowup",
-      category: "Architecture",
-      proficiency: 75,
-      description:
-         "Designing reusable Compose components by lifting state to the appropriate owner and exposing clear state and event contracts.",
-      knowledge: [
-         "Stateless composables",
-         "State & event callbacks",
-         "Single source of truth",
-         "State ownership & reusability",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [
-         {
-            id: "nodebook",
-            name: "NodeBook",
-            icon: "notebook",
-            link: "#nodebook",
-         },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
-         },
-      ],
-   },
-   {
-      id: "dependency-injection",
-      name: "Dependency Injection",
-      icon: "plugzap",
-      category: "Architecture",
-      proficiency: 75,
-      description:
-         "Structuring Android applications by providing dependencies externally for cleaner, modular, and testable code.",
-      knowledge: [
-         "Constructor injection",
-         "Dependency scopes & lifecycles",
-         "Modules & providers",
-         "Testability benefits",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [],
-   },
-   {
-      id: "hilt",
-      name: "Hilt",
-      icon: "syringe",
-      category: "Architecture",
-      proficiency: 70,
-      description:
-         "Implementing dependency injection in Android applications using Hilt for cleaner and more maintainable architecture.",
-      knowledge: [
-         "Hilt modules",
-         "Constructor & field injection",
-         "Scopes & component lifecycles",
-         "ViewModel injection",
-      ],
-      documentation: { label: "View Documentation", url: "" },
-      projects: [],
-   },
+
+
+   // {
+   //    id: "state-management",
+   //    name: "State Management",
+   //    icon: "shuffle",
+   //    category: "Architecture",
+   //    proficiency: 78,
+   //    description:
+   //       "Managing predictable UI state and state-driven interactions across Android application layers.",
+   //    knowledge: [
+   //       "Single source of truth",
+   //       "Unidirectional data flow",
+   //       "StateFlow & Compose State",
+   //       "Side-effect handling",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [
+   //       {
+   //          id: "nodebook",
+   //          name: "NodeBook",
+   //          icon: "notebook",
+   //          link: "#nodebook",
+   //       },
+   //       {
+   //          id: "cookbook",
+   //          name: "CookBook",
+   //          icon: "chef",
+   //          link: "#cookbook",
+   //       },
+   //    ],
+   // },
+
+
+   // {
+   //    id: "state-hoisting",
+   //    name: "State Hoisting",
+   //    icon: "arrowup",
+   //    category: "Architecture",
+   //    proficiency: 75,
+   //    description:
+   //       "Designing reusable Compose components by lifting state to the appropriate owner and exposing clear state and event contracts.",
+   //    knowledge: [
+   //       "Stateless composables",
+   //       "State & event callbacks",
+   //       "Single source of truth",
+   //       "State ownership & reusability",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [
+   //       {
+   //          id: "nodebook",
+   //          name: "NodeBook",
+   //          icon: "notebook",
+   //          link: "#nodebook",
+   //       },
+   //       {
+   //          id: "cookbook",
+   //          name: "CookBook",
+   //          icon: "chef",
+   //          link: "#cookbook",
+   //       },
+   //    ],
+   // },
+
+
+   // {
+   //    id: "dependency-injection",
+   //    name: "Dependency Injection",
+   //    icon: "plugzap",
+   //    category: "Architecture",
+   //    proficiency: 75,
+   //    description:
+   //       "Structuring Android applications by providing dependencies externally for cleaner, modular, and testable code.",
+   //    knowledge: [
+   //       "Constructor injection",
+   //       "Dependency scopes & lifecycles",
+   //       "Modules & providers",
+   //       "Testability benefits",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [],
+   // },
+
+
+   // {
+   //    id: "hilt",
+   //    name: "Hilt",
+   //    icon: "syringe",
+   //    category: "Architecture",
+   //    proficiency: 70,
+   //    description:
+   //       "Implementing dependency injection in Android applications using Hilt for cleaner and more maintainable architecture.",
+   //    knowledge: [
+   //       "Hilt modules",
+   //       "Constructor & field injection",
+   //       "Scopes & component lifecycles",
+   //       "ViewModel injection",
+   //    ],
+   //    documentation: { label: "View Documentation", url: "" },
+   //    projects: [],
+   // },
+
+   
    {
       id: "repository-pattern",
       name: "Repository Pattern",

@@ -8,7 +8,7 @@ export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USERNAME}`;
 // whenever you solve more problems. Leave as null until you fill them in.
 export const MANUAL_LEETCODE_STATS = {
    totalSolved: 107, // e.g. 150
-   totalQuestions: 4047,
+   totalQuestions: 500,
    easy: 60,
    medium: 34,
    hard: 13,
