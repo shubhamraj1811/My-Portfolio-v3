@@ -20,7 +20,7 @@ export const KNOWN_ACHIEVEMENTS = {
    dsaLevel: "Beginner → Medium",
 };
 
-const LEETCODE_STATS_API = `https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`;
+const LEETCODE_STATS_API = `/api/leetcode?username=${LEETCODE_USERNAME}`;
 const GITHUB_API = `https://api.github.com/users/${GITHUB_USERNAME}`;
 const githubContribApi = (year) =>
    `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}${year ? `?y=${year}` : ""}`;
@@ -31,14 +31,13 @@ export async function fetchLeetCodeStats() {
       const res = await fetch(LEETCODE_STATS_API);
       if (!res.ok) throw new Error("LeetCode API request failed");
       const data = await res.json();
-      if (data.status !== "success")
-         throw new Error("LeetCode API returned an error");
+      if (data.error) throw new Error(data.error);
       return {
          totalSolved: data.totalSolved,
          totalQuestions: data.totalQuestions,
-         easy: data.easySolved,
-         medium: data.mediumSolved,
-         hard: data.hardSolved,
+         easy: data.easy,
+         medium: data.medium,
+         hard: data.hard,
          source: "live",
       };
    } catch {
