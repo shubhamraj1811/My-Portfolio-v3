@@ -1,4 +1,5 @@
 import profileImage from "../assets/Profile/profile.jpg";
+import shubh from "../assets/Profile/shubhm.jpeg";
 
 // Highlights of my journey and achievements
 const HIGHLIGHTS = [
@@ -67,7 +68,7 @@ function AboutMe() {
                        <div className="w-40 h-40 rounded-full bg-linear-to-br from-teal-400 via-purple-500 to-pink-500 p-0.75 mb-4">
                      <div className="w-full h-full rounded-full bg-[#0d0d12] flex items-center justify-center text-theme-muted text-xs">
                         <img
-                           src={profileImage}
+                           src={shubh}
                            alt="Profile"
                            className="w-full h-full rounded-full object-cover"
                         />
