@@ -204,8 +204,14 @@ export const certUiIconMap = {
    maximize: <Maximize2 size={16} />,
 };
 
-import { SiLeetcode } from 'react-icons/si'
-import { Trophy as TrophyIcon, TrendingUp, GitBranch, Activity, ChevronDown } from 'lucide-react'
+import { SiLeetcode } from "react-icons/si";
+import {
+   Trophy as TrophyIcon,
+   TrendingUp,
+   GitBranch,
+   Activity,
+   ChevronDown,
+} from "lucide-react";
 
 export const codingProfileIconMap = {
    leetcode: <SiLeetcode className="text-yellow-400" />,
@@ -215,4 +221,19 @@ export const codingProfileIconMap = {
    branch: <GitBranch size={16} />,
    activity: <Activity size={16} />,
    chevrondown: <ChevronDown size={14} />,
-}
+};
+
+// ================ CONTACT ICON MAP =================
+import { FaLinkedin } from 'react-icons/fa'
+import { Mail, MapPin, X as XIcon } from 'lucide-react'
+
+export const contactIconMap = {
+   github: <SiGithub size={18} />,
+   linkedin: <FaLinkedin size={18} />,
+   leetcode: <SiLeetcode size={18} />, // already imported earlier for Coding Profile
+   mail: <Mail size={18} />,
+   x: <XIcon size={18} />,
+   mappin: <MapPin size={18} />,
+   arrowup: <ArrowUp size={20} />,
+   send: <Send size={16} />,
+};

@@ -8,10 +8,10 @@ import Education from './components/Education'
 import Projects from './components/Projects'
 import Certificates from './components/Certificates'
 import CodingProfile from './components/CodingProfile'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import GoToTop from './components/GoToTop'
 
-const sections = [
-    { id: 'contact', label: 'Contact Me' },
-]
 
 function App() {
     return (
@@ -26,16 +26,12 @@ function App() {
             <Projects />
             <Certificates />
             <CodingProfile />
+            <Contact />
+            <Footer />
+            <GoToTop />
 
-            {sections.map((s) => (
-                <section
-                    key={s.id}
-                    id={s.id}
-                    className="min-h-screen flex items-center justify-center"
-                >
-                    <h2 className="text-3xl font-bold">{s.label} section</h2>
-                </section>
-            ))}
+
+
         </div>
     )
 }

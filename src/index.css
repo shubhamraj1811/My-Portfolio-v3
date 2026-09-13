@@ -207,3 +207,11 @@ html.light .fluid-field::after {
 .library-fade-bottom.visible {
   opacity: 0.9;
 } */
+
+.footer-surface {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+html.light .footer-surface {
+  background: rgba(255, 255, 255, 0.35);
+}
