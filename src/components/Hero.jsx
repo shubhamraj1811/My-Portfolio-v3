@@ -1,5 +1,7 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import useTypewriter from '../hooks/useTypewriter'
+import resume from "../assets/shubham-resume.pdf";
+
 
 // ===== HERO SECTION =====
 const ROLES = [
@@ -64,7 +66,7 @@ function Hero() {
 
                         {/* resume button */}
                         <a
-                            href="/resume.pdf"
+                            href={resume}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-6 py-3 rounded-full font-semibold border border-theme transition-all duration-300 hover:text-white hover:bg-linear-to-r hover:from-teal-400 hover:via-purple-500 hover:to-pink-500 hover:border-transparent"
