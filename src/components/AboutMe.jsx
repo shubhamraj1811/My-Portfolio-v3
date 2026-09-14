@@ -1,4 +1,3 @@
-import profileImage from "../assets/Profile/profile.jpg";
 import shubh from "../assets/Profile/shubhm.jpeg";
 
 // Highlights of my journey and achievements
