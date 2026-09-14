@@ -9,17 +9,14 @@ function ProjectTabs({ project }) {
 
    return (
       <div className="flex flex-col h-full">
-         <div
-            role="tablist"
-            className="flex items-center gap-6 border-b border-theme mb-4"
-         >
+         <div role="tablist" className="flex items-center gap-4 sm:gap-6 border-b border-theme mb-4 overflow-x-auto no-scrollbar">
             {TABS.map((tab) => (
                <button
                   key={tab}
                   role="tab"
                   aria-selected={active === tab}
                   onClick={() => setActive(tab)}
-                  className={`relative pb-3 text-base font-medium transition-colors ${
+                  className={`relative pb-3 text-base font-medium transition-colors whitespace-nowrap shrink-0 ${
                      active === tab
                         ? "text-theme-primary"
                         : "text-theme-muted hover:text-theme-secondary"
@@ -36,7 +33,7 @@ function ProjectTabs({ project }) {
             ))}
          </div>
 
-         <div className="relative min-h-240px sm:min-h-260px">
+         <div className="relative lg:min-h-[260px]">
             <AnimatePresence mode="wait">
                <motion.div
                   key={active}
@@ -45,7 +42,7 @@ function ProjectTabs({ project }) {
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.25 }}
                   role="tabpanel"
-                  className="absolute inset-0"
+                  className="lg:absolute lg:inset-0"
                >
                   {active === "Overview" && (
                      <div>

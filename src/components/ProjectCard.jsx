@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
-
 import ImageSlideshow from "./ImageSlideshow";
-
 import ProjectTabs from "./ProjectTabs";
-
 import { uiIconMap, TECH_ICON_KEY, skillIconMap } from "../data/skillIconMap";
 
 const METADATA_LABELS = {
@@ -147,15 +144,13 @@ function ProjectCard({ project, index }) {
          {metadataEntries.length > 0 && (
             <div className="pt-5 border-t border-theme">
                <div
-                  className="grid gap-4 divide-y sm:divide-y-0 sm:divide-x divide-theme"
-                  style={{
-                     gridTemplateColumns: `repeat(${metadataEntries.length}, minmax(0, 1fr))`,
-                  }}
+                  className="grid grid-cols-2 lg:[grid-template-columns:repeat(var(--meta-cols),minmax(0,1fr))] gap-4 divide-y lg:divide-y-0 lg:divide-x divide-theme"
+                  style={{ "--meta-cols": metadataEntries.length }}
                >
                   {metadataEntries.map(([key, value]) => (
                      <div
                         key={key}
-                        className="flex items-center gap-3 sm:px-4 first:pl-0 pt-3 sm:pt-0"
+                        className="flex items-center gap-3 lg:px-4 lg:first:pl-0 pt-3 lg:pt-0 min-w-0"
                      >
                         <span
                            className={METADATA_COLORS[key] || "text-purple-400"}
@@ -168,9 +163,7 @@ function ProjectCard({ project, index }) {
                               {METADATA_LABELS[key] || key.toUpperCase()}
                            </p>
 
-                           <p className="text-sm sm:text-base font-semibold text-theme-primary">
-                              {value}
-                           </p>
+                           <p className="text-sm sm:text-base font-semibold text-theme-primary break-words">{value}</p>
                         </div>
                      </div>
                   ))}

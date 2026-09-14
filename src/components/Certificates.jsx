@@ -9,7 +9,7 @@ const FILTERS = ["All", "Certificates", "Achievements"];
 function TypeChip({ type, featured }) {
    const c = TYPE_COLORS[type];
    return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
          <span
             className={`px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-widest border ${c.border} ${c.bg} ${c.text}`}
          >
@@ -41,12 +41,9 @@ function ShowcaseCard({ item, index, total }) {
 
    const frontContent = (
       <>
-         <div className="flex items-center justify-between mb-5">
+         <div className="flex items-center justify-between flex-wrap gap-2 mb-5">
             <TypeChip type={item.type} featured={item.featured} />
-            <span className="text-xs text-theme-muted">
-               {String(index + 1).padStart(2, "0")} /{" "}
-               {String(total).padStart(2, "0")}
-            </span>
+            <span className="text-xs text-theme-muted shrink-0">{String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</span>
          </div>
 
          <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme flex items-center justify-center text-3xl mb-5">
@@ -179,7 +176,7 @@ function ShowcaseCard({ item, index, total }) {
    return (
       <>
          {/* min-h works at ALL widths as a safe floor; lg:h-full only kicks in on desktop once the parent grid has a real height */}
-         <div className="min-h-440px lg:h-full perspective:1600px">
+         <div className="min-h-[560px] sm:min-h-[520px] lg:h-[var(--lib-h)] lg:min-h-0 [perspective:1600px]">
             <AnimatePresence mode="wait">
                <motion.div
                   key={item.id}
