@@ -62,12 +62,6 @@ export const SKILLS = [
             icon: "notebook",
             link: "#nodebook",
          },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
-         },
       ],
    },
 
@@ -232,12 +226,6 @@ export const SKILLS = [
             icon: "notebook",
             link: "#nodebook",
          },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
-         },
       ],
    },
 
@@ -366,12 +354,6 @@ export const SKILLS = [
             icon: "notebook",
             link: "#nodebook",
          },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
-         },
       ],
    },
 
@@ -481,12 +463,6 @@ export const SKILLS = [
             name: "NodeBook",
             icon: "notebook",
             link: "#nodebook",
-         },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
          },
       ],
    },
@@ -763,6 +739,7 @@ export const SKILLS = [
       documentation: { label: "View Documentation", url: "" },
       projects: [],
    },
+
    {
       id: "git",
       name: "Git",
@@ -784,12 +761,6 @@ export const SKILLS = [
             name: "NodeBook",
             icon: "notebook",
             link: "#nodebook",
-         },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
          },
       ],
    },
@@ -814,12 +785,6 @@ export const SKILLS = [
             name: "NodeBook",
             icon: "notebook",
             link: "#nodebook",
-         },
-         {
-            id: "cookbook",
-            name: "CookBook",
-            icon: "chef",
-            link: "#cookbook",
          },
       ],
    },

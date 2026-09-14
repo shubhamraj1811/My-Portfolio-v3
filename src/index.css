@@ -74,7 +74,7 @@ h1, h2, h3, h4 {
   background-size: 300% 300%;
   filter: blur(60px) saturate(1.35) brightness(0.78);
   transition: filter 1s ease;
-  animation: fluidDrift 40s ease-in-out infinite alternate;
+  animation: fluidDrift 22s ease-in-out infinite alternate;
   will-change: background-position;
 }
 
@@ -98,7 +98,7 @@ html.light .fluid-field {
   mix-blend-mode: screen;
   filter: brightness(0.78);
   transition: filter 1s ease;
-  animation: fluidDrift2 52s ease-in-out infinite alternate;
+  animation: fluidDrift2 30s ease-in-out infinite alternate;
 }
 
 html.light .fluid-field::after {

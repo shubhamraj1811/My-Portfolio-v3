@@ -43,7 +43,10 @@ function ShowcaseCard({ item, index, total }) {
       <>
          <div className="flex items-center justify-between flex-wrap gap-2 mb-5">
             <TypeChip type={item.type} featured={item.featured} />
-            <span className="text-xs text-theme-muted shrink-0">{String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</span>
+            <span className="text-xs text-theme-muted shrink-0">
+               {String(index + 1).padStart(2, "0")} /{" "}
+               {String(total).padStart(2, "0")}
+            </span>
          </div>
 
          <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-teal-400/20 via-purple-500/20 to-pink-500/20 border border-theme flex items-center justify-center text-3xl mb-5">
@@ -175,8 +178,7 @@ function ShowcaseCard({ item, index, total }) {
 
    return (
       <>
-         {/* min-h works at ALL widths as a safe floor; lg:h-full only kicks in on desktop once the parent grid has a real height */}
-         <div className="min-h-[560px] sm:min-h-[520px] lg:h-[var(--lib-h)] lg:min-h-0 [perspective:1600px]">
+         <div className="min-h-[560px] sm:min-h-[520px] lg:h-[var(--lib-h)] lg:min-h-0 flex flex-col [perspective:1600px]">
             <AnimatePresence mode="wait">
                <motion.div
                   key={item.id}
@@ -184,10 +186,10 @@ function ShowcaseCard({ item, index, total }) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.35 }}
-                  className="h-full"
+                  className="flex-1 flex flex-col min-h-0"
                >
                   {shouldReduceMotion ? (
-                     <div className="project-card relative h-full rounded-2xl overflow-hidden">
+                     <div className="project-card relative flex-1 min-h-0 rounded-2xl overflow-hidden">
                         <AnimatePresence mode="wait">
                            <motion.div
                               key={flipped ? "back" : "front"}
@@ -195,7 +197,7 @@ function ShowcaseCard({ item, index, total }) {
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
                               transition={{ duration: 0.25 }}
-                              className="h-full rounded-2xl bg-glass-scrolled backdrop-blur-xl p-6 sm:p-7 flex flex-col"
+                              className="h-full rounded-2xl bg-glass-scrolled backdrop-blur-xl p-6 sm:p-7 flex flex-col overflow-y-auto library-scroll"
                            >
                               {flipped ? backContent : frontContent}
                            </motion.div>
@@ -203,38 +205,22 @@ function ShowcaseCard({ item, index, total }) {
                      </div>
                   ) : (
                      <div
-                        className="project-card relative h-full rounded-2xl"
+                        className="project-card relative flex-1 min-h-0 rounded-2xl"
                         style={{ transformStyle: "preserve-3d" }}
                      >
-                        {/* front face — animates its OWN rotation 0deg -> 180deg (away/hidden). Never composed with a parent rotation, so the end state is always exact. */}
                         <motion.div
                            animate={{ rotateY: flipped ? 180 : 0 }}
-                           transition={{
-                              duration: 0.65,
-                              ease: [0.22, 1, 0.36, 1],
-                           }}
-                           style={{
-                              backfaceVisibility: "hidden",
-                              WebkitBackfaceVisibility: "hidden",
-                           }}
+                           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                           style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                            className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col overflow-y-auto library-scroll"
                         >
                            {frontContent}
                         </motion.div>
 
-                        {/* back face — animates its OWN rotation -180deg (hidden) -> 0deg (fully normal, readable).
-                            0deg is a literal, unrotated, unmirrored orientation. */}
-
                         <motion.div
                            animate={{ rotateY: flipped ? 0 : -180 }}
-                           transition={{
-                              duration: 0.65,
-                              ease: [0.22, 1, 0.36, 1],
-                           }}
-                           style={{
-                              backfaceVisibility: "hidden",
-                              WebkitBackfaceVisibility: "hidden",
-                           }}
+                           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                           style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                            className="absolute inset-0 rounded-2xl bg-glass-scrolled p-6 sm:p-7 flex flex-col overflow-y-auto library-scroll"
                         >
                            {backContent}
@@ -378,13 +364,13 @@ function Certificates() {
       <section id="certificates" className="min-h-screen px-6 lg:px-16 py-24">
          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-                   <div className="mb-3">
-                       <span className="inline-block px-4 py-1.5 rounded-full border border-theme bg-glass">
-                           <span className="text-sm font-semibold tracking-widest bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                                CERTIFICATES
-                           </span>
-                       </span>
-                   </div>
+               <div className="mb-3">
+                  <span className="inline-block px-4 py-1.5 rounded-full border border-theme bg-glass">
+                     <span className="text-sm font-semibold tracking-widest bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        CERTIFICATES
+                     </span>
+                  </span>
+               </div>
                <h2 className="text-3xl sm:text-4xl font-bold text-theme-primary">
                   Certifications & Achievements
                </h2>
