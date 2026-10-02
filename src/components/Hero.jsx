@@ -79,9 +79,9 @@ function Hero() {
 
                     <div className="flex gap-3 text-lg">
                         {[
-                            { icon: <FaGithub />, href: 'https://github.com/yourusername' },
-                            { icon: <FaLinkedin />, href: 'https://linkedin.com/in/yourusername' },
-                            { icon: <FaEnvelope />, href: 'mailto:youremail@example.com' },
+                            { icon: <FaGithub />, href: 'https://github.com/shubhamraj1811' },
+                            { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/shubham1811' },
+                            { icon: <FaEnvelope />, href: 'mailto:ershubhcsofficial@gmail.com' },
                         ].map((s, i) => (
                             <a
                                 key={i}
