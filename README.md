@@ -2,8 +2,7 @@
 
 > A fully custom, interactive portfolio built to showcase real projects, real skills, and real problem-solving — not a template.
 
-**Live Demo:** [add your deployed URL here]
-**Resume:** [add link once uploaded]
+**Live Demo:** https://shubhm-portfolio.vercel.app/    
 
 ---
 
